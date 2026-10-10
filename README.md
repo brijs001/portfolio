@@ -8,7 +8,7 @@ Repo: https://github.com/brijs001/portfolio-2026
 
 ## What's included
 
-- **4 case studies** from Bank of America and Verisk Analytics, each following a 4-section structure: the problem, the customers, the solution under his ownership, and the results — measured, not claimed.
+- **4 case studies** from Bank of America and Verisk Analytics, each following a 4-section structure: the problem, the customers, the solution under his ownership, and the results — with measurement approaches clearly marked where details are still pending.
 - **Dual-audience framing** — appealing to both PM recruiters and consulting/Upwork leads.
 - **Light and dark mode**, mobile-responsive, accessibility-minded.
 
