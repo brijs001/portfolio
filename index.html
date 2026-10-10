@@ -609,17 +609,15 @@ button {
   border-bottom: 1px solid var(--color-divider);
 }
 
-.case-metrics-2 {
-  grid-template-columns: repeat(1, 1fr);
+.case-metrics.case-metrics-2 {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
   max-width: none;
 }
 
 @media (min-width: 768px) {
   .case-metrics {
     grid-template-columns: repeat(4, 1fr);
-  }
-  .case-metrics-2 {
-    max-width: 50%;
   }
 }
 
@@ -1127,8 +1125,8 @@ button {
             The system reduced false positives by 30%, improved fraud detection accuracy by 28%, improved operational efficiency by 50%, scaled automation to roughly <strong>60% of manual operations</strong>, and prevented approximately <strong>$1M in indirect expense losses</strong> — all while maintaining regulatory confidence.
           </p>
           <div class="case-measurement">
-            <span class="case-measurement-label">How I measured it</span>
-            <p>I built the measurement framework around four dimensions — because a fraud system has to prove both that it catches fraud and that it doesn't disrupt legitimate users:</p>
+            <span class="case-measurement-label">Proposed measurement approach — awaiting confirmation</span>
+            <p>For an AI fraud system, four dimensions need to be measured — it has to prove both that it catches fraud and that it doesn't disrupt legitimate users:</p>
             <p><strong>Model performance:</strong> recall, precision, false-positive rate, model drift over time.</p>
             <p><strong>Business impact:</strong> dollar value of fraud prevented, cost per investigation, alerts per analyst.</p>
             <p><strong>User experience:</strong> false-decline rate, support contact rate post-flag, time to resolution.</p>
@@ -1347,7 +1345,7 @@ button {
             Customer satisfaction rose to <strong>90%</strong> after normalizing the acquired product onto Verisk's design standard. The UX work was part of the same broader initiative that took the product to <strong>$97M+</strong> in revenue over four years.
           </p>
           <div class="case-measurement">
-            <span class="case-measurement-label">How I measured it</span>
+            <span class="case-measurement-label">Proposed measurement approach — awaiting confirmation</span>
             <p><strong>Satisfaction:</strong> customer satisfaction before and after the redesign.</p>
             <p><strong>Adoption & retention:</strong> active usage by customer segment and churn rate through the migration.</p>
           </div>
