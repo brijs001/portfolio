@@ -2,7 +2,9 @@
 
 Personal portfolio site for **Brijesh Soni** (Sr. Technical Product Manager, AI/ML · Cloud · SaaS · FinTech).
 
-Live site: [github.com/brijs001/portfolio-2026](https://github.com/brijs001/portfolio-2026)
+Live site: https://brijs001.github.io/portfolio-2026/
+
+Repo: https://github.com/brijs001/portfolio-2026
 
 ## What's included
 
@@ -16,10 +18,10 @@ Pure static HTML/CSS/JS. No build step. Host on any static host.
 
 ## Deploy options
 
-- **GitHub Pages** (free, public repos): Settings → Pages → Deploy from branch → `master` / `root`.
-- **Vercel** (note: Vercel Hobby tier prohibits commercial use — including portfolio sites advertising paid consulting services, per their own [terms](https://vercel.com/docs/limits#hobby).
-- **Netlify** (free tier permits commercial use).
-- **Cloudflare Pages** (free tier permits commercial use).
+- **GitHub Pages** (already enabled for this repo — free).
+- **Vercel** (note: Vercel's Hobby tier prohibits commercial use per Vercel's own terms of use — a consulting portfolio may not fit; their [Vercel Hobby terms](https://vercel.com/docs/limits#hobby) or a paid Vercel Pro plan would be needed).
+- **Netlify** (free tier).
+- **Cloudflare Pages** (free tier).
 
 ## Local preview
 

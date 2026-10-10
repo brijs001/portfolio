@@ -340,7 +340,7 @@ button {
 .mobile-nav-overlay {
   position: fixed;
   inset: 0;
-  z-index: 99;
+  z-index: 48; /* below the sticky header (z-index 50), above page content */
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(2px);
   opacity: 0;
@@ -609,9 +609,24 @@ button {
   border-bottom: 1px solid var(--color-divider);
 }
 
+.case-metrics-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 50%;
+  margin-inline: 0;
+}
+
+.case-metrics-2 .metric {
+  text-align: left;
+  padding-inline: var(--space-6);
+}
+
 @media (min-width: 768px) {
   .case-metrics {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .case-metrics-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 50%;
   }
 }
 
@@ -1116,7 +1131,7 @@ button {
         <div class="case-section">
           <h3><span class="section-num">4</span> Results & Measurement</h3>
           <p>
-            The system reduced false positives by 30% and improved fraud detection accuracy by 28%. Operational efficiency improved by 50%, and the multi-agent system scaled automation to roughly <strong>60% of manual operations</strong> — all while maintaining regulatory confidence.
+            The system reduced false positives by 30%, improved fraud detection accuracy by 28%, improved operational efficiency by 50%, scaled automation to roughly <strong>60% of manual operations</strong>, and prevented approximately <strong>$1M in indirect expense losses</strong> — all while maintaining regulatory confidence.
           </p>
           <div class="case-measurement">
             <span class="case-measurement-label">How I measured it</span>
@@ -1299,11 +1314,9 @@ button {
         </p>
       </div>
 
-      <div class="case-metrics">
-        <div class="metric"><span class="metric-value">100%</span><span class="metric-label">customer satisfaction post-redesign</span></div>
-        <div class="metric"><span class="metric-value">20%</span><span class="metric-label">measured performance gain in A/B tests</span></div>
-        <div class="metric"><span class="metric-value">3×</span><span class="metric-label">SMB adoption from segmentation work</span></div>
-        <div class="metric"><span class="metric-value">70%</span><span class="metric-label">improvement in time-to-market via CI/CD automation</span></div>
+      <div class="case-metrics case-metrics-2">
+        <div class="metric"><span class="metric-value">90%</span><span class="metric-label">customer satisfaction</span></div>
+        <div class="metric"><span class="metric-value">3×</span><span class="metric-label">SMB adoption</span></div>
       </div>
 
       <div class="case-sections">
@@ -1332,21 +1345,20 @@ button {
             <li><strong>Empathy mapping and customer interviews</strong> — surfaced what users actually needed versus what the old interface provided.</li>
             <li><strong>Design workshop</strong> with key customers, design leads, and tech leads — wireframes and mocks co-created, not imposed.</li>
             <li><strong>A/B testing</strong> — ran the old and new interfaces head-to-head with real user cohorts before full rollout.</li>
-            <li><strong>Stakeholder management</strong> — convinced skeptical customers and internal teams using the A/B data (the new interface measurably outperformed by 20%).</li>
+            <li><strong>Stakeholder management</strong> — convinced skeptical customers and internal teams using the A/B test data and user-interview findings.</li>
           </ul>
         </div>
 
         <div class="case-section">
           <h3><span class="section-num">4</span> Results & Measurement</h3>
           <p>
-            Customer satisfaction reached <strong>100%</strong> among customers using the redesigned interface — measured through structured post-task surveys. The new interface also measurably outperformed the old one by <strong>20%</strong> in A/B tests. The redesign work was part of the same initiative that took the product to <strong>$97M+</strong> in revenue over four years.
+            Customer satisfaction rose to <strong>90%</strong>. This work — normalizing the acquired product onto Verisk's design standard — was part of the same initiative that took the product to <strong>$97M+</strong> in revenue over four years and tripled SMB adoption.
           </p>
           <div class="case-measurement">
             <span class="case-measurement-label">How I measured it</span>
-            <p><strong>Task completion rate:</strong> users completing core workflows in the new vs. old interface.</p>
-            <p><strong>Time-to-decision:</strong> how long analysts took to answer a standard risk question.</p>
-            <p><strong>Satisfaction:</strong> structured post-task surveys and NPS.</p>
-            <p><strong>Adoption & retention:</strong> active usage by customer segment, churn rate during migration.</p>
+            <p><strong>Satisfaction:</strong> structured customer-satisfaction surveys before and after the redesign.</p>
+            <p><strong>Adoption & retention:</strong> active usage by customer segment and churn rate through the migration.</p>
+            <p><strong>Business outcome:</strong> the same initiative's revenue trajectory ($97M+ over four years, 3× SMB adoption).</p>
           </div>
           <p class="case-learning">
             <strong>Learning:</strong> Bring compliance and security stakeholders into the design process early. Late-stage requirements are the most expensive kind of rework.
@@ -1473,11 +1485,15 @@ button {
         <h3>Hiring a Product Leader?</h3>
         <p>Full-time senior technical PM roles in AI/ML, fintech, or SaaS. Resume and references available on request.</p>
         <a href="mailto:brijeshsoni.dev@gmail.com?subject=Senior%20Technical%20PM%20Opportunity">brijeshsoni.dev@gmail.com</a>
+        <br>
+        <a href="https://www.linkedin.com/in/brijesh-soni/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <div class="contact-card">
         <h3>Need a Consultant?</h3>
         <p>Contract, fractional, or project-based work. AI product strategy, platform modernization, or 0-to-1 launches.</p>
         <a href="mailto:brijeshsoni.dev@gmail.com?subject=Consulting%20Inquiry">brijeshsoni.dev@gmail.com</a>
+        <br>
+        <a href="https://www.linkedin.com/in/brijesh-soni/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
