@@ -610,14 +610,8 @@ button {
 }
 
 .case-metrics-2 {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 50%;
-  margin-inline: 0;
-}
-
-.case-metrics-2 .metric {
-  text-align: left;
-  padding-inline: var(--space-6);
+  grid-template-columns: repeat(1, 1fr);
+  max-width: none;
 }
 
 @media (min-width: 768px) {
@@ -625,7 +619,6 @@ button {
     grid-template-columns: repeat(4, 1fr);
   }
   .case-metrics-2 {
-    grid-template-columns: repeat(2, 1fr);
     max-width: 50%;
   }
 }
@@ -1316,7 +1309,6 @@ button {
 
       <div class="case-metrics case-metrics-2">
         <div class="metric"><span class="metric-value">90%</span><span class="metric-label">customer satisfaction</span></div>
-        <div class="metric"><span class="metric-value">3×</span><span class="metric-label">SMB adoption</span></div>
       </div>
 
       <div class="case-sections">
@@ -1352,13 +1344,12 @@ button {
         <div class="case-section">
           <h3><span class="section-num">4</span> Results & Measurement</h3>
           <p>
-            Customer satisfaction rose to <strong>90%</strong>. This work — normalizing the acquired product onto Verisk's design standard — was part of the same initiative that took the product to <strong>$97M+</strong> in revenue over four years and tripled SMB adoption.
+            Customer satisfaction rose to <strong>90%</strong> after normalizing the acquired product onto Verisk's design standard. The UX work was part of the same broader initiative that took the product to <strong>$97M+</strong> in revenue over four years.
           </p>
           <div class="case-measurement">
             <span class="case-measurement-label">How I measured it</span>
-            <p><strong>Satisfaction:</strong> structured customer-satisfaction surveys before and after the redesign.</p>
+            <p><strong>Satisfaction:</strong> customer satisfaction before and after the redesign.</p>
             <p><strong>Adoption & retention:</strong> active usage by customer segment and churn rate through the migration.</p>
-            <p><strong>Business outcome:</strong> the same initiative's revenue trajectory ($97M+ over four years, 3× SMB adoption).</p>
           </div>
           <p class="case-learning">
             <strong>Learning:</strong> Bring compliance and security stakeholders into the design process early. Late-stage requirements are the most expensive kind of rework.

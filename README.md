@@ -19,9 +19,9 @@ Pure static HTML/CSS/JS. No build step. Host on any static host.
 ## Deploy options
 
 - **GitHub Pages** (already enabled for this repo — free).
-- **Vercel** (note: Vercel's Hobby tier prohibits commercial use per Vercel's own terms of use — a consulting portfolio may not fit; their [Vercel Hobby terms](https://vercel.com/docs/limits#hobby) or a paid Vercel Pro plan would be needed).
-- **Netlify** (free tier).
-- **Cloudflare Pages** (free tier).
+- **Vercel** — note: Vercel's [Fair Use Guidelines](https://vercel.com/docs/limits/fair-use-guidelines#commercial-usage) restrict the Hobby (free) plan to non-commercial personal use; commercial usage (including advertising consulting services) requires a Pro or Enterprise plan.
+- **Netlify** — free tier.
+- **Cloudflare Pages** — free tier.
 
 ## Local preview
 
