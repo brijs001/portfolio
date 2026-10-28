@@ -79,7 +79,7 @@
           </div>
         </div>
       </div>
-      <img class="hero-photo" src="favicon.png" alt="Portrait of Brijesh Soni" width="1197" height="1197">
+      <img class="hero-photo" src="profile-photo.png" alt="Portrait of Brijesh Soni" width="1197" height="1314">
     </div>
   </div>
 </section>
@@ -501,14 +501,14 @@
       <div class="contact-card">
         <h3>Hiring a Product Leader?</h3>
         <p>Full-time senior technical PM roles in AI/ML, fintech, or SaaS. Resume and references available on request.</p>
-        <a href="mailto:brijeshsoni.dev@gmail.com?subject=Senior%20Technical%20PM%20Opportunity">brijeshsoni.dev@gmail.com</a>
+        <button class="contact-email-link" type="button" data-contact-open data-inquiry-type="Product leadership opportunity">Email</button>
         <br>
         <a href="https://www.linkedin.com/in/brijesh-soni/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <div class="contact-card">
         <h3>Need a Consultant?</h3>
         <p>Contract, fractional, or project-based work. AI product strategy, platform modernization, or 0-to-1 launches.</p>
-        <a href="mailto:brijeshsoni.dev@gmail.com?subject=Consulting%20Inquiry">brijeshsoni.dev@gmail.com</a>
+        <button class="contact-email-link" type="button" data-contact-open data-inquiry-type="Consulting inquiry">Email</button>
         <br>
         <a href="https://www.linkedin.com/in/brijesh-soni/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
@@ -517,6 +517,35 @@
 </section>
 
 </main>
+
+<dialog class="contact-dialog" id="contactDialog" aria-labelledby="contactDialogTitle">
+  <div class="contact-dialog-header">
+    <div>
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 id="contactDialogTitle">Send me a message</h2>
+    </div>
+  </div>
+  <form class="contact-form" id="contactForm" method="post" target="contactFormResponse">
+    <input type="hidden" name="inquiryType" id="contactInquiryType">
+    <input type="hidden" name="submissionToken" id="contactSubmissionToken">
+    <div class="contact-form-trap" aria-hidden="true">
+      <label for="contactWebsite">Leave this field empty</label>
+      <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+    <label for="contactName">Your name</label>
+    <input id="contactName" name="name" type="text" autocomplete="name" maxlength="100" required>
+    <label for="contactEmail">Email address</label>
+    <input id="contactEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+    <label for="contactMessage">Your query</label>
+    <textarea id="contactMessage" name="message" rows="5" maxlength="5000" required></textarea>
+    <p class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+    <div class="contact-form-actions">
+      <button class="btn btn-outline" id="contactCancel" type="button">Cancel</button>
+      <button class="btn btn-primary" id="contactSubmit" type="submit">Submit</button>
+    </div>
+  </form>
+</dialog>
+<iframe class="contact-form-response" name="contactFormResponse" title="Contact form response"></iframe>
 
 <footer class="site-footer">
   <div class="container">© 2026 Brijesh Soni. Built with care.</div>

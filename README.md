@@ -14,7 +14,7 @@ Repo: https://github.com/brijs001/portfolio
 
 ## Tech
 
-Pure static HTML/CSS/JS. No build step. Host on any static host.
+Static HTML/CSS/JS hosted on GitHub Pages, with Google Apps Script handling contact-form email. No build step.
 
 ## Project structure
 
@@ -22,7 +22,23 @@ Pure static HTML/CSS/JS. No build step. Host on any static host.
 - `styles.css` — layout, components, responsive styles, and theme tokens.
 - `script.js` — theme toggle and mobile navigation behavior.
 - `brand-logo.png` — transparent script mark in the portfolio's primary green.
+- `profile-photo.png` — full-resolution portrait used in the hero.
 - `favicon.png` — profile-photo favicon.
+- `apps-script/Code.gs` — Google Apps Script endpoint for the contact form.
+
+## Contact form setup
+
+The contact form uses Google Apps Script to send messages without exposing the recipient address in the public site. GitHub Pages cannot send email on its own. Complete this one-time setup before enabling form submissions:
+
+1. Create a project at [Google Apps Script](https://script.google.com/) and paste in `apps-script/Code.gs`.
+2. In **Project Settings → Script Properties**, add `RECIPIENT_EMAIL` with your destination email address. Do not put the address in the public site files.
+3. Deploy as a **Web app**, choose **Execute as me**, and allow access to **Anyone** so visitors can submit the form.
+4. Copy the deployment URL ending in `/exec` and set `contactFormEndpoint` near the top of `script.js` to that URL.
+5. Commit and publish the site changes. Test the form after deployment.
+
+When updating `apps-script/Code.gs`, edit the existing web app deployment and select **New version** so the deployed endpoint uses the updated code. The `/exec` URL remains the same.
+
+The endpoint validates fields, includes a honeypot and a one-minute per-sender throttle, and sends through your Google account. Apps Script consumer accounts currently have a 100 email-recipient/day quota; Google may change quotas. The public endpoint can be submitted by anyone, so review Apps Script execution logs and disable the deployment if it receives abuse.
 
 ## Deploy options
 

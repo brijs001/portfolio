@@ -1,4 +1,5 @@
 (function () {
+  var contactFormEndpoint = "https://script.google.com/macros/s/AKfycbyiFyJNsl9PehrE75ddPmSPAxuJKvLI6DpGqi6lbyldM9u-xJhb6urW8VqX63pzRSAtTg/exec";
   var toggle = document.querySelector("[data-theme-toggle]");
   var root = document.documentElement;
   var current = "light";
@@ -48,6 +49,108 @@
       link.addEventListener("click", function () {
         setMobileNav(false);
       });
+    });
+  }
+
+  var contactDialog = document.getElementById("contactDialog");
+  var contactForm = document.getElementById("contactForm");
+  var contactFrame = document.querySelector('iframe[name="contactFormResponse"]');
+  var contactStatus = document.getElementById("contactFormStatus");
+  var contactSubmit = document.getElementById("contactSubmit");
+  var contactCancel = document.getElementById("contactCancel");
+  var inquiryType = document.getElementById("contactInquiryType");
+  var submissionToken = document.getElementById("contactSubmissionToken");
+  var activeSubmissionToken = "";
+  var responseTimer;
+
+  function setContactStatus(message, state) {
+    contactStatus.textContent = message;
+    contactStatus.dataset.state = state || "";
+  }
+
+  function createSubmissionToken() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+      return window.crypto.randomUUID();
+    }
+
+    return Date.now().toString(36) + Math.random().toString(36).slice(2);
+  }
+
+  if (contactDialog && contactForm && contactFrame) {
+    document.querySelectorAll("[data-contact-open]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        inquiryType.value = button.dataset.inquiryType || "Portfolio inquiry";
+        setContactStatus("", "");
+        contactDialog.showModal();
+        document.getElementById("contactName").focus();
+      });
+    });
+
+    contactCancel.addEventListener("click", function () {
+      contactDialog.close();
+    });
+
+    contactDialog.addEventListener("click", function (event) {
+      if (event.target === contactDialog) {
+        contactDialog.close();
+      }
+    });
+
+    contactDialog.addEventListener("close", function () {
+      window.clearTimeout(responseTimer);
+      contactForm.reset();
+      contactSubmit.disabled = false;
+      contactCancel.textContent = "Cancel";
+      activeSubmissionToken = "";
+    });
+
+    contactForm.addEventListener("submit", function (event) {
+      if (!contactFormEndpoint) {
+        event.preventDefault();
+        setContactStatus("The contact form is not connected yet. Please use LinkedIn for now.", "error");
+        return;
+      }
+
+      if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(contactFormEndpoint)) {
+        event.preventDefault();
+        setContactStatus("The contact form is misconfigured. Please use LinkedIn for now.", "error");
+        return;
+      }
+
+      event.preventDefault();
+      activeSubmissionToken = createSubmissionToken();
+      submissionToken.value = activeSubmissionToken;
+      contactForm.action = contactFormEndpoint;
+      contactSubmit.disabled = true;
+      contactCancel.textContent = "Cancel";
+      setContactStatus("Sending your message…", "");
+      contactForm.submit();
+
+      responseTimer = window.setTimeout(function () {
+        contactSubmit.disabled = false;
+        setContactStatus("No confirmation was received. Check the form setup before trying again.", "error");
+      }, 30000);
+    });
+
+    window.addEventListener("message", function (event) {
+      if (
+        !event.data ||
+        event.data.type !== "portfolio-contact-result" ||
+        event.data.token !== activeSubmissionToken
+      ) {
+        return;
+      }
+
+      window.clearTimeout(responseTimer);
+      contactSubmit.disabled = false;
+
+      if (event.data.success === true) {
+        setContactStatus("Thanks — your message has been sent.", "success");
+        contactForm.reset();
+        contactCancel.textContent = "Close";
+      } else {
+        setContactStatus("Your message could not be sent. Please try again later or use LinkedIn.", "error");
+      }
     });
   }
 })();
