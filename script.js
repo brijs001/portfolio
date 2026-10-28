@@ -56,12 +56,14 @@
   var contactForm = document.getElementById("contactForm");
   var contactFrame = document.querySelector('iframe[name="contactFormResponse"]');
   var contactStatus = document.getElementById("contactFormStatus");
+  var contactSuccessToast = document.getElementById("contactSuccessToast");
   var contactSubmit = document.getElementById("contactSubmit");
   var contactCancel = document.getElementById("contactCancel");
   var inquiryType = document.getElementById("contactInquiryType");
   var submissionToken = document.getElementById("contactSubmissionToken");
   var activeSubmissionToken = "";
   var responseTimer;
+  var successToastTimer;
 
   function setContactStatus(message, state) {
     contactStatus.textContent = message;
@@ -79,6 +81,9 @@
   if (contactDialog && contactForm && contactFrame) {
     document.querySelectorAll("[data-contact-open]").forEach(function (button) {
       button.addEventListener("click", function () {
+        window.clearTimeout(successToastTimer);
+        contactSuccessToast.hidden = true;
+        contactSuccessToast.classList.remove("is-visible");
         inquiryType.value = button.dataset.inquiryType || "Portfolio inquiry";
         setContactStatus("", "");
         contactDialog.showModal();
@@ -145,9 +150,17 @@
       contactSubmit.disabled = false;
 
       if (event.data.success === true) {
-        setContactStatus("Thanks — your message has been sent.", "success");
+        contactSuccessToast.textContent = "Thanks — your message has been sent.";
+        contactSuccessToast.hidden = false;
+        contactSuccessToast.classList.remove("is-visible");
+        void contactSuccessToast.offsetWidth;
+        contactSuccessToast.classList.add("is-visible");
+        successToastTimer = window.setTimeout(function () {
+          contactSuccessToast.hidden = true;
+          contactSuccessToast.classList.remove("is-visible");
+        }, 3000);
         contactForm.reset();
-        contactCancel.textContent = "Close";
+        contactDialog.close();
       } else {
         setContactStatus("Your message could not be sent. Please try again later or use LinkedIn.", "error");
       }

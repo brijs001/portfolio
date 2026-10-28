@@ -1092,6 +1092,56 @@ button {
   color: var(--color-primary);
 }
 
+.contact-success-toast {
+  position: fixed;
+  z-index: 20;
+  right: 1rem;
+  bottom: 1.5rem;
+  left: 1rem;
+  width: fit-content;
+  max-width: min(32rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+.contact-success-toast.is-visible {
+  animation: contact-success-toast 3s ease-in-out forwards;
+}
+
+@keyframes contact-success-toast {
+  0%,
+  10% {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  30%,
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-success-toast.is-visible {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .contact-form-actions {
   display: flex;
   justify-content: flex-end;
