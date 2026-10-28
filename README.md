@@ -16,6 +16,13 @@ Repo: https://github.com/brijs001/portfolio
 
 Pure static HTML/CSS/JS. No build step. Host on any static host.
 
+## Project structure
+
+- `index.html` — page content and metadata.
+- `styles.css` — layout, components, responsive styles, and theme tokens.
+- `script.js` — theme toggle and mobile navigation behavior.
+- `favicon.png` — profile-photo favicon.
+
 ## Deploy options
 
 - **GitHub Pages** (already enabled for this repo — free).
