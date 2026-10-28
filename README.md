@@ -2,9 +2,9 @@
 
 Personal portfolio site for **Brijesh Soni** (Sr. Technical Product Manager, AI/ML · Cloud · SaaS · FinTech).
 
-Live site: https://brijs001.github.io/portfolio-2026/
+Live site: https://brijs001.github.io/portfolio/
 
-Repo: https://github.com/brijs001/portfolio-2026
+Repo: https://github.com/brijs001/portfolio
 
 ## What's included
 
