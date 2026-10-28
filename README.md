@@ -21,6 +21,7 @@ Pure static HTML/CSS/JS. No build step. Host on any static host.
 - `index.html` — page content and metadata.
 - `styles.css` — layout, components, responsive styles, and theme tokens.
 - `script.js` — theme toggle and mobile navigation behavior.
+- `brand-logo.png` — transparent script mark in the portfolio's primary green.
 - `favicon.png` — profile-photo favicon.
 
 ## Deploy options

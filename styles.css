@@ -227,10 +227,10 @@ button {
 }
 
 .brand-mark {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
-  color: var(--color-primary);
+  object-fit: contain;
 }
 
 .brand-name {
@@ -375,9 +375,41 @@ button {
   pointer-events: none;
 }
 
+.hero-layout,
 .hero-inner {
   position: relative;
+}
+
+.hero-inner {
   max-width: 720px;
+}
+
+.hero-photo {
+  width: min(100%, 360px);
+  aspect-ratio: 1;
+  justify-self: center;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 3px solid var(--color-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 768px) {
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+    align-items: start;
+    gap: clamp(var(--space-8), 6vw, var(--space-16));
+  }
+
+  .hero-inner {
+    max-width: none;
+  }
+
+  .hero-photo {
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  }
 }
 
 .hero-eyebrow {
