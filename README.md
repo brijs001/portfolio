@@ -14,13 +14,14 @@ Repo: https://github.com/brijs001/portfolio
 
 ## Tech
 
-Static HTML/CSS/JS hosted on GitHub Pages, with Google Apps Script handling contact-form email. No build step.
+Jekyll-rendered HTML/CSS/JS hosted on GitHub Pages, with Google Apps Script handling contact-form email. GitHub Pages builds the Markdown content into the page at deploy time; no client-side content loading is needed.
 
 ## Project structure
 
-- `index.html` — page content and metadata.
+- `index.html` — document shell, metadata, and shared asset references.
+- `_includes/portfolio-content.md` — portfolio page content and semantic HTML markup.
 - `styles.css` — layout, components, responsive styles, and theme tokens.
-- `script.js` — theme toggle and mobile navigation behavior.
+- `script.js` — theme toggle, mobile navigation, and contact form behavior.
 - `brand-logo.png` — transparent script mark in the portfolio's primary green.
 - `profile-photo.png` — full-resolution portrait used in the hero.
 - `favicon.png` — profile-photo favicon.
@@ -49,9 +50,4 @@ The endpoint validates fields, includes a honeypot and a one-minute per-sender t
 
 ## Local preview
 
-```bash
-git clone https://github.com/brijs001/portfolio-2026.git
-cd portfolio-2026
-# open index.html in a browser, or:
-npx serve .
-```
+GitHub Pages automatically builds and serves the site. A plain `file://` preview or static file server will not process the Jekyll include and Markdown filter in `index.html`; use a local Jekyll installation to preview changes before publishing.
