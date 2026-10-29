@@ -385,10 +385,18 @@ button {
   container-type: inline-size;
 }
 
+.hero-layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .hero-photo {
-  width: min(90%, 270px);
+  display: block;
+  width: min(70%, 126px);
+  order: -1;
   aspect-ratio: 1;
   justify-self: center;
+  margin: 0 auto var(--space-6);
   object-fit: contain;
   object-position: center;
   background-color: #292722;
@@ -410,7 +418,10 @@ button {
   }
 
   .hero-photo {
+    width: min(90%, 270px);
+    order: 0;
     margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 0;
   }
 }
 
@@ -1168,6 +1179,68 @@ button {
 
 .contact-form-response {
   display: none;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-block: var(--space-8) var(--space-10);
+  }
+
+  .hero-photo {
+    margin-bottom: var(--space-5);
+  }
+
+  .hero-ctas {
+    margin-bottom: var(--space-8);
+  }
+
+  .hero-stats {
+    gap: var(--space-3);
+  }
+
+  .stat {
+    padding: var(--space-3);
+  }
+
+  .case-studies,
+  .about,
+  .services,
+  .contact {
+    padding-block: var(--space-10);
+  }
+
+  .case-studies-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .case-study {
+    margin-bottom: var(--space-10);
+  }
+
+  .case-study-header {
+    padding: var(--space-8) var(--space-5) var(--space-6);
+  }
+
+  .metric {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .case-sections {
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  .case-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .about-grid {
+    gap: var(--space-8);
+  }
+
+  .service-card,
+  .contact-card {
+    padding: var(--space-6);
+  }
 }
 
 /* ============ Footer ============ */
