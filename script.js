@@ -1,10 +1,10 @@
 (function () {
-  var contactFormEndpoint = "https://script.google.com/macros/s/AKfycbyiFyJNsl9PehrE75ddPmSPAxuJKvLI6DpGqi6lbyldM9u-xJhb6urW8VqX63pzRSAtTg/exec";
-  var toggle = document.querySelector("[data-theme-toggle]");
-  var root = document.documentElement;
-  var current = "light";
+  const contactFormEndpoint = "https://script.google.com/macros/s/AKfycbyiFyJNsl9PehrE75ddPmSPAxuJKvLI6DpGqi6lbyldM9u-xJhb6urW8VqX63pzRSAtTg/exec";
+  const toggle = document.querySelector("[data-theme-toggle]");
+  const root = document.documentElement;
+  let current = "light";
 
-  if (matchMedia("(prefers-color-scheme: dark)").matches) {
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     current = "dark";
   }
   root.setAttribute("data-theme", current);
@@ -26,9 +26,9 @@
     });
   }
 
-  var mobileBtn = document.getElementById("mobileMenuBtn");
-  var mobileNav = document.getElementById("mobileNav");
-  var mobileNavOverlay = document.getElementById("mobileNavOverlay");
+  const mobileBtn = document.getElementById("mobileMenuBtn");
+  const mobileNav = document.getElementById("mobileNav");
+  const mobileNavOverlay = document.getElementById("mobileNavOverlay");
 
   function setMobileNav(open) {
     mobileNav.classList.toggle("open", open);
@@ -52,18 +52,18 @@
     });
   }
 
-  var contactDialog = document.getElementById("contactDialog");
-  var contactForm = document.getElementById("contactForm");
-  var contactFrame = document.querySelector('iframe[name="contactFormResponse"]');
-  var contactStatus = document.getElementById("contactFormStatus");
-  var contactSuccessToast = document.getElementById("contactSuccessToast");
-  var contactSubmit = document.getElementById("contactSubmit");
-  var contactCancel = document.getElementById("contactCancel");
-  var inquiryType = document.getElementById("contactInquiryType");
-  var submissionToken = document.getElementById("contactSubmissionToken");
-  var activeSubmissionToken = "";
-  var responseTimer;
-  var successToastTimer;
+  const contactDialog = document.getElementById("contactDialog");
+  const contactForm = document.getElementById("contactForm");
+  const contactFrame = document.querySelector('iframe[name="contactFormResponse"]');
+  const contactStatus = document.getElementById("contactFormStatus");
+  const contactSuccessToast = document.getElementById("contactSuccessToast");
+  const contactSubmit = document.getElementById("contactSubmit");
+  const contactCancel = document.getElementById("contactCancel");
+  const inquiryType = document.getElementById("contactInquiryType");
+  const submissionToken = document.getElementById("contactSubmissionToken");
+  let activeSubmissionToken = "";
+  let responseTimer;
+  let successToastTimer;
 
   function setContactStatus(message, state) {
     contactStatus.textContent = message;

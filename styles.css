@@ -386,7 +386,7 @@ button {
 }
 
 .hero-photo {
-  width: min(100%, 360px);
+  width: min(90%, 270px);
   aspect-ratio: 1;
   justify-self: center;
   object-fit: contain;
@@ -400,7 +400,7 @@ button {
 @media (min-width: 768px) {
   .hero-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 270px);
     align-items: start;
     gap: clamp(var(--space-8), 6vw, var(--space-16));
   }
