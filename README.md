@@ -21,13 +21,17 @@ Jekyll-rendered HTML/CSS/JS hosted on GitHub Pages, with Google Apps Script hand
 - `index.html` — document shell, metadata, and shared asset references.
 - `_includes/portfolio-content.md` — portfolio page content and semantic HTML markup.
 - `styles.css` — layout, components, responsive styles, and theme tokens.
-- `script.js` — theme toggle, mobile navigation, and contact form behavior.
+- `script.js` — theme toggle, navigation, scroll reveals, case study drawers, and contact form behavior.
+- `interactive.js` — PM Playbook Simulator and "Ask me anything" Q&A (content drawn from the case studies).
 - `analytics-consent.js` — opt-in Google Analytics loading and visitor preference handling.
 - `_includes/analytics-consent.html` — accessible analytics consent panel.
 - `_config.yml` — Jekyll configuration, including the public GA4 Measurement ID.
 - `brand-logo.png` — transparent script mark in the portfolio's primary green.
-- `profile-photo.png` — full-resolution portrait used in the hero.
-- `favicon.png` — profile-photo favicon.
+- `brand-logo-64.png` — downsized logo used in the header.
+- `profile-photo.png` — full-resolution portrait (source file).
+- `profile-photo.jpg` — 640px web version used in the hero and social previews.
+- `apple-touch-icon.png` — 180px home-screen icon.
+- `favicon.png` — full-resolution profile-photo square (source file).
 - `apps-script/Code.gs` — Google Apps Script endpoint for the contact form.
 
 ## Contact form setup
