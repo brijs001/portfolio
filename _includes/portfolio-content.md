@@ -275,7 +275,7 @@
         </div>
       </div>
       <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
-        <p class="chat-msg chat-msg-in">Hi! I'm Brijesh. Pick a question on the left and I'll answer it the way I would in a first conversation.</p>
+        <p class="chat-msg chat-msg-in">Hi! I'm Brijesh. Pick a question <span class="ask-hint-side">on the left</span><span class="ask-hint-stacked">above</span> and I'll answer it the way I would in a first conversation.</p>
       </div>
       <p class="chat-typing" id="chatTyping" hidden><span></span><span></span><span></span><span class="sr-only">Typing</span></p>
     </div>

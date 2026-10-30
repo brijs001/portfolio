@@ -1358,10 +1358,22 @@ button {
   align-items: start;
 }
 
+.ask-hint-side {
+  display: none;
+}
+
 @media (min-width: 960px) {
   .ask-layout {
     grid-template-columns: 1fr 1.1fr;
     gap: var(--space-16);
+  }
+
+  .ask-hint-side {
+    display: inline;
+  }
+
+  .ask-hint-stacked {
+    display: none;
   }
 }
 
