@@ -42,18 +42,18 @@
 <!-- ============ Hero ============ -->
 <section class="hero" id="hero">
   <div class="container hero-center">
-    <img class="hero-avatar reveal" src="profile-photo.jpg" alt="Portrait of Brijesh Soni" width="640" height="702" fetchpriority="high">
-    <p class="availability reveal"><span class="pulse-dot" aria-hidden="true"></span>Delivering AI product leadership &amp; advisory · Worldwide</p>
-    <h1 class="reveal">Hi, I'm <span class="name-accent">Brijesh Soni</span></h1>
-    <p class="hero-tagline reveal">
+    <img class="hero-avatar" src="profile-photo.jpg" alt="Portrait of Brijesh Soni" width="640" height="702" fetchpriority="high">
+    <p class="availability"><span class="pulse-dot" aria-hidden="true"></span>Delivering AI product leadership &amp; advisory · Worldwide</p>
+    <h1>Hi, I'm <span class="name-accent">Brijesh Soni</span></h1>
+    <p class="hero-tagline">
       <span>Unlocking opportunity.</span>
       <span>Building innovative products.</span>
       <span>Driving growth.</span>
     </p>
-    <p class="hero-lede reveal">
+    <p class="hero-lede">
       A technical product manager who turns complex AI/ML, cloud, and SaaS problems into shipped products — and owns the metrics that prove they worked. 15+ years in technology, 8+ in product.
     </p>
-    <ul class="hero-chips reveal" aria-label="Focus areas">
+    <ul class="hero-chips" aria-label="Focus areas">
       <li>Agentic AI &amp; LLMs</li>
       <li>AI/ML Products</li>
       <li>Cloud Modernization</li>
@@ -62,7 +62,7 @@
       <li>FinTech &amp; Capital Markets</li>
       <li>Insurance Analytics</li>
     </ul>
-    <div class="hero-ctas reveal">
+    <div class="hero-ctas">
       <a href="#playbook" class="btn btn-primary btn-lg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg>
         Run the PM Playbook
