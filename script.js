@@ -2,12 +2,17 @@
   const contactFormEndpoint = "https://script.google.com/macros/s/AKfycbyiFyJNsl9PehrE75ddPmSPAxuJKvLI6DpGqi6lbyldM9u-xJhb6urW8VqX63pzRSAtTg/exec";
   const toggle = document.querySelector("[data-theme-toggle]");
   const root = document.documentElement;
-  let current = "light";
+  const themeKey = "portfolio-theme";
+  const darkSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  let current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
 
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    current = "dark";
+  function readSavedTheme() {
+    try {
+      return window.localStorage.getItem(themeKey);
+    } catch (error) {
+      return null;
+    }
   }
-  root.setAttribute("data-theme", current);
 
   function getIcon(mode) {
     return mode === "dark"
@@ -15,30 +20,49 @@
       : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
   }
 
+  function applyTheme(mode) {
+    current = mode;
+    root.setAttribute("data-theme", mode);
+    if (toggle) {
+      toggle.innerHTML = getIcon(mode);
+      toggle.setAttribute("aria-label", "Switch to " + (mode === "dark" ? "light" : "dark") + " mode");
+    }
+  }
+
+  applyTheme(current);
+
   if (toggle) {
-    toggle.innerHTML = getIcon(current);
-    toggle.setAttribute("aria-label", "Switch to " + (current === "dark" ? "light" : "dark") + " mode");
     toggle.addEventListener("click", function () {
-      current = current === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", current);
-      toggle.setAttribute("aria-label", "Switch to " + (current === "dark" ? "light" : "dark") + " mode");
-      toggle.innerHTML = getIcon(current);
+      applyTheme(current === "dark" ? "light" : "dark");
+      try {
+        window.localStorage.setItem(themeKey, current);
+      } catch (error) {
+        console.warn("Theme preference could not be saved to local storage.", error);
+      }
     });
   }
+
+  darkSchemeQuery.addEventListener("change", function (event) {
+    if (readSavedTheme() !== "light" && readSavedTheme() !== "dark") {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
 
   const mobileBtn = document.getElementById("mobileMenuBtn");
   const mobileNav = document.getElementById("mobileNav");
   const mobileNavOverlay = document.getElementById("mobileNavOverlay");
 
-  function setMobileNav(open) {
+  function setMobileNav(open, returnFocus) {
     mobileNav.classList.toggle("open", open);
     mobileNavOverlay.classList.toggle("open", open);
     mobileBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    mobileBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (!open && returnFocus) {
+      mobileBtn.focus();
+    }
   }
 
   if (mobileBtn && mobileNav && mobileNavOverlay) {
-    mobileBtn.setAttribute("aria-expanded", "false");
-    mobileBtn.setAttribute("aria-controls", "mobileNav");
     mobileBtn.addEventListener("click", function () {
       setMobileNav(!mobileNav.classList.contains("open"));
     });
@@ -50,6 +74,233 @@
         setMobileNav(false);
       });
     });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && mobileNav.classList.contains("open")) {
+        setMobileNav(false, true);
+      }
+    });
+    window.matchMedia("(min-width: 768px)").addEventListener("change", function (event) {
+      if (event.matches) {
+        setMobileNav(false);
+      }
+    });
+  }
+
+  const sectionNavLinks = document.querySelectorAll(".main-nav a[href^='#'], .mobile-nav a[href^='#']");
+  const navigableSections = [...sectionNavLinks]
+    .map(function (link) {
+      return document.querySelector(link.getAttribute("href"));
+    })
+    .filter(function (section, index, sections) {
+      return section && sections.indexOf(section) === index;
+    });
+
+  if ("IntersectionObserver" in window && navigableSections.length > 0) {
+    function updateCurrentSection() {
+      const activeBandTop = window.innerHeight * 0.18;
+      const activeBandBottom = window.innerHeight * 0.24;
+      let currentSection = navigableSections.find(function (section) {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= activeBandBottom && bounds.bottom >= activeBandTop;
+      });
+
+      if (!currentSection && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100) {
+        currentSection = navigableSections[navigableSections.length - 1];
+      }
+
+      sectionNavLinks.forEach(function (link) {
+        if (currentSection && link.getAttribute("href") === "#" + currentSection.id) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    let activeSectionUpdateScheduled = false;
+    function scheduleCurrentSectionUpdate() {
+      if (activeSectionUpdateScheduled) {
+        return;
+      }
+
+      activeSectionUpdateScheduled = true;
+      window.requestAnimationFrame(function () {
+        activeSectionUpdateScheduled = false;
+        updateCurrentSection();
+      });
+    }
+
+    const sectionObserver = new IntersectionObserver(scheduleCurrentSectionUpdate, {
+      rootMargin: "-18% 0px -76% 0px"
+    });
+
+    navigableSections.forEach(function (section) {
+      sectionObserver.observe(section);
+    });
+    updateCurrentSection();
+    window.addEventListener("scroll", scheduleCurrentSectionUpdate, { passive: true });
+    window.addEventListener("resize", scheduleCurrentSectionUpdate);
+  }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function countUp(element) {
+    const target = Number(element.dataset.count);
+    const prefix = element.dataset.prefix || "";
+    const suffix = element.dataset.suffix || "";
+    if (prefersReducedMotion.matches || !target) {
+      return;
+    }
+
+    const duration = 1200;
+    const start = performance.now();
+    function frame(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = prefix + Math.round(target * eased) + suffix;
+      if (progress < 1) {
+        window.requestAnimationFrame(frame);
+      }
+    }
+    window.requestAnimationFrame(frame);
+  }
+
+  let pendingReveals = [...document.querySelectorAll(".reveal")];
+  let revealScheduled = false;
+
+  function revealInView() {
+    revealScheduled = false;
+    const triggerLine = window.innerHeight * 0.92;
+    let staggerIndex = 0;
+
+    pendingReveals = pendingReveals.filter(function (item) {
+      if (item.getBoundingClientRect().top > triggerLine) {
+        return true;
+      }
+
+      // Stagger items that enter the viewport together
+      const delay = prefersReducedMotion.matches ? 0 : staggerIndex * 90;
+      staggerIndex += 1;
+      window.setTimeout(function () {
+        item.classList.add("is-visible");
+        item.querySelectorAll("[data-count]").forEach(countUp);
+      }, delay);
+      return false;
+    });
+
+    if (pendingReveals.length === 0) {
+      window.removeEventListener("scroll", scheduleReveal);
+      window.removeEventListener("resize", scheduleReveal);
+    }
+  }
+
+  function scheduleReveal() {
+    if (!revealScheduled) {
+      revealScheduled = true;
+      window.requestAnimationFrame(revealInView);
+    }
+  }
+
+  window.addEventListener("scroll", scheduleReveal, { passive: true });
+  window.addEventListener("resize", scheduleReveal);
+  revealInView();
+
+  const scrollProgress = document.getElementById("scrollProgress");
+  if (scrollProgress) {
+    let progressScheduled = false;
+    function updateScrollProgress() {
+      progressScheduled = false;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress.style.transform = "scaleX(" + (scrollable > 0 ? window.scrollY / scrollable : 0) + ")";
+    }
+    window.addEventListener("scroll", function () {
+      if (!progressScheduled) {
+        progressScheduled = true;
+        window.requestAnimationFrame(updateScrollProgress);
+      }
+    }, { passive: true });
+    updateScrollProgress();
+  }
+
+  const caseDrawers = document.querySelectorAll(".case-drawer");
+  let drawerOpener = null;
+
+  function openCaseDrawer(id) {
+    const drawer = document.getElementById(id);
+    if (!drawer || typeof drawer.showModal !== "function") {
+      return;
+    }
+
+    caseDrawers.forEach(function (other) {
+      if (other !== drawer && other.open) {
+        other.close();
+      }
+    });
+    if (!drawer.open) {
+      drawer.showModal();
+    }
+    drawer.scrollTop = 0;
+    history.replaceState(null, "", "#" + id);
+  }
+
+  function handleDrawerClosed() {
+    const anyOpen = [...caseDrawers].some(function (other) {
+      return other.open;
+    });
+    if (anyOpen) {
+      return;
+    }
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    if (drawerOpener) {
+      drawerOpener.focus();
+      drawerOpener = null;
+    }
+  }
+
+  function closeCaseDrawer(drawer) {
+    drawer.close();
+    handleDrawerClosed();
+  }
+
+  document.addEventListener("click", function (event) {
+    const opener = event.target.closest("[data-case-open]");
+    if (opener) {
+      if (!opener.closest(".case-drawer")) {
+        drawerOpener = opener;
+      }
+      openCaseDrawer(opener.dataset.caseOpen);
+      return;
+    }
+
+    const closer = event.target.closest("[data-case-close]");
+    if (closer) {
+      if (closer.dataset.scrollTo) {
+        drawerOpener = null;
+      }
+      closeCaseDrawer(closer.closest(".case-drawer"));
+      if (closer.dataset.scrollTo) {
+        document.getElementById(closer.dataset.scrollTo).scrollIntoView({
+          behavior: prefersReducedMotion.matches ? "auto" : "smooth"
+        });
+      }
+    }
+  });
+
+  caseDrawers.forEach(function (drawer) {
+    drawer.addEventListener("click", function (event) {
+      // Clicks on the backdrop land on the dialog element but outside its box
+      const bounds = drawer.getBoundingClientRect();
+      if (event.target === drawer && event.clientX < bounds.left) {
+        closeCaseDrawer(drawer);
+      }
+    });
+    drawer.addEventListener("close", handleDrawerClosed);
+  });
+
+  if (/^#case-[1-4]$/.test(window.location.hash)) {
+    openCaseDrawer(window.location.hash.slice(1));
   }
 
   const backToTop = document.getElementById("backToTop");
