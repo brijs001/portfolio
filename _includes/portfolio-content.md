@@ -816,12 +816,14 @@
   </dialog>
 </div>
 
-<button class="back-to-top" id="backToTop" type="button" aria-label="Scroll to top" title="Back to top" hidden>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M12 19V5"></path>
-    <path d="m6 11 6-6 6 6"></path>
-  </svg>
-</button>
+<div class="back-to-top-wrap">
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Scroll to top" title="Back to top" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5"></path>
+      <path d="m6 11 6-6 6 6"></path>
+    </svg>
+  </button>
+</div>
 
 <dialog class="contact-dialog" id="contactDialog" aria-labelledby="contactDialogTitle">
   <div class="contact-dialog-header">
