@@ -487,25 +487,32 @@
     <h2>Let's Talk</h2>
     <p>Whether you're hiring a senior technical PM or need help shipping a product — reach out.</p>
     <div class="contact-options">
-      <div class="contact-card">
-        <h3>Hiring a Product Leader?</h3>
-        <p>Full-time senior technical PM roles in AI/ML, fintech, or SaaS. Resume and references available on request.</p>
-        <button class="contact-email-link" type="button" data-contact-open data-inquiry-type="Product leadership opportunity">Email</button>
-        <br>
-        <a href="https://www.linkedin.com/in/brijesh-soni/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-      <div class="contact-card">
-        <h3>Need a Consultant?</h3>
-        <p>Contract, fractional, or project-based work. AI product strategy, platform modernization, or 0-to-1 launches.</p>
-        <button class="contact-email-link" type="button" data-contact-open data-inquiry-type="Consulting inquiry">Email</button>
-        <br>
-        <a href="https://www.linkedin.com/in/brijesh-soni/" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="contact-card contact-card-unified">
+        <div class="contact-audience">
+          <h3>Hiring a Product Leader?</h3>
+          <p>Full-time senior technical PM roles in AI/ML, fintech, or SaaS. Resume and references available on request.</p>
+        </div>
+        <div class="contact-audience">
+          <h3>Need a Consultant?</h3>
+          <p>Contract, fractional, or project-based work. AI product strategy, platform modernization, or 0-to-1 launches.</p>
+        </div>
+        <div class="contact-links" aria-label="Contact links">
+          <button class="contact-email-link" type="button" data-contact-open data-inquiry-type="Portfolio inquiry">Email</button>
+          <a href="https://www.linkedin.com/in/brijesh-soni/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 </main>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Scroll to top" title="Back to top" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"></path>
+    <path d="m6 11 6-6 6 6"></path>
+  </svg>
+</button>
 
 <dialog class="contact-dialog" id="contactDialog" aria-labelledby="contactDialogTitle">
   <div class="contact-dialog-header">
@@ -538,5 +545,8 @@
 <iframe class="contact-form-response" name="contactFormResponse" title="Contact form response"></iframe>
 
 <footer class="site-footer">
-  <div class="container">© 2026 Brijesh Soni. Built with care.</div>
+  <div class="container">
+    © 2026 Brijesh Soni. Built with care.
+    <button class="analytics-settings" id="analyticsSettings" type="button">Privacy settings</button>
+  </div>
 </footer>

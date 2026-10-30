@@ -22,6 +22,9 @@ Jekyll-rendered HTML/CSS/JS hosted on GitHub Pages, with Google Apps Script hand
 - `_includes/portfolio-content.md` — portfolio page content and semantic HTML markup.
 - `styles.css` — layout, components, responsive styles, and theme tokens.
 - `script.js` — theme toggle, mobile navigation, and contact form behavior.
+- `analytics-consent.js` — opt-in Google Analytics loading and visitor preference handling.
+- `_includes/analytics-consent.html` — accessible analytics consent panel.
+- `_config.yml` — Jekyll configuration, including the public GA4 Measurement ID.
 - `brand-logo.png` — transparent script mark in the portfolio's primary green.
 - `profile-photo.png` — full-resolution portrait used in the hero.
 - `favicon.png` — profile-photo favicon.
@@ -40,6 +43,14 @@ The contact form uses Google Apps Script to send messages without exposing the r
 When updating `apps-script/Code.gs`, edit the existing web app deployment and select **New version** so the deployed endpoint uses the updated code. The `/exec` URL remains the same.
 
 The endpoint validates fields, includes a honeypot and a one-minute per-sender throttle, and sends through your Google account. Apps Script consumer accounts currently have a 100 email-recipient/day quota; Google may change quotas. The public endpoint can be submitted by anyone, so review Apps Script execution logs and disable the deployment if it receives abuse.
+
+## Google Analytics 4
+
+The site uses the GA4 Measurement ID in `_config.yml`. Analytics is opt-in: the Google tag is not requested until a visitor chooses **Accept all** or enables analytics under **Customize**. Visitors can reject optional analytics or change their choice through **Privacy settings** in the footer. The preference is stored in the visitor's browser local storage; if storage is unavailable, the choice applies only to the current page view.
+
+The tag disables Google Signals and ad-personalization signals. Google Analytics still processes usage data when enabled, so publish an appropriate privacy notice and confirm consent requirements for your visitors and location. The Measurement ID is public configuration, not a secret.
+
+To confirm collection after publishing, visit the site, allow analytics, then check **Reports → Realtime** in GA4. Browser privacy settings, ad blockers, or declined consent can prevent events from appearing.
 
 ## Deploy options
 

@@ -52,6 +52,22 @@
     });
   }
 
+  const backToTop = document.getElementById("backToTop");
+  if (backToTop) {
+    function updateBackToTopVisibility() {
+      backToTop.hidden = window.scrollY < 400;
+    }
+
+    updateBackToTopVisibility();
+    window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
+    });
+  }
+
   const contactDialog = document.getElementById("contactDialog");
   const contactForm = document.getElementById("contactForm");
   const contactFrame = document.querySelector('iframe[name="contactFormResponse"]');

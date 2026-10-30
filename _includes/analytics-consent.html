@@ -1,0 +1,40 @@
+<aside
+  class="analytics-consent"
+  id="analyticsConsent"
+  role="region"
+  aria-labelledby="analyticsConsentTitle"
+  aria-describedby="analyticsConsentMessage"
+  data-measurement-id="{{ site.google_analytics | escape }}"
+  hidden
+>
+  <div class="analytics-consent-copy">
+    <p class="analytics-consent-eyebrow">Privacy preferences</p>
+    <h2 id="analyticsConsentTitle">Your privacy choices</h2>
+    <p id="analyticsConsentMessage">
+      This site uses optional cookies to understand how it is used. They stay off unless you choose to enable them.
+    </p>
+    <p class="analytics-consent-status" id="analyticsConsentStatus" aria-live="polite" hidden></p>
+  </div>
+  <div class="analytics-consent-actions">
+    <button class="analytics-consent-button analytics-consent-button-primary" type="button" data-analytics-choice="accept">Accept all</button>
+    <button class="analytics-consent-button" type="button" data-analytics-choice="reject">Reject optional</button>
+    <button
+      class="analytics-consent-customize"
+      type="button"
+      id="analyticsCustomize"
+      aria-controls="analyticsPreferences"
+      aria-expanded="false"
+    >Customize</button>
+  </div>
+  <div class="analytics-preferences" id="analyticsPreferences" hidden>
+    <div class="analytics-preferences-copy">
+      <h3>Optional cookies</h3>
+      <p>These cookies help us understand site usage and improve the experience. They may collect pages visited, device and browser details, and approximate location. You can change your choice at any time in Privacy settings.</p>
+    </div>
+    <label class="analytics-preferences-toggle" for="analyticsPreference">
+      <span>Analytics</span>
+      <input id="analyticsPreference" type="checkbox">
+    </label>
+    <button class="analytics-consent-button analytics-consent-button-primary" type="button" id="saveAnalyticsPreferences">Save my choices</button>
+  </div>
+</aside>
