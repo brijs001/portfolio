@@ -1,0 +1,76 @@
+@media (max-width: 640px) {
+  .hero {
+    min-height: 0;
+    padding-block: var(--space-10) var(--space-12);
+  }
+
+  .hero-avatar {
+    width: 104px;
+    height: 104px;
+  }
+
+  .hero-ctas {
+    width: 100%;
+    margin-bottom: var(--space-8);
+  }
+
+  .hero-ctas .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .stat {
+    padding: var(--space-4);
+  }
+
+  .project-card,
+  .service-card {
+    padding: var(--space-6);
+  }
+
+  .timeline {
+    padding-left: var(--space-6);
+  }
+
+  .timeline-item {
+    padding: var(--space-5);
+  }
+
+  .timeline-item::before {
+    left: calc(-1 * var(--space-6) + 1px);
+  }
+
+  .console-body {
+    height: 300px;
+  }
+
+  .chat-messages {
+    height: 360px;
+  }
+
+  .case-study-header {
+    padding: var(--space-8) var(--space-5) var(--space-6);
+  }
+
+  .metric {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .case-sections {
+    gap: var(--space-8);
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  .case-drawer-bar {
+    padding-inline: var(--space-4);
+  }
+
+  .case-drawer-nav {
+    padding: var(--space-5) var(--space-5) var(--space-8);
+  }
+
+  .back-to-top {
+    bottom: var(--space-4);
+    right: var(--space-4);
+  }
+}

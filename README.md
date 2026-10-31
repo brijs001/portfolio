@@ -9,44 +9,89 @@ Repo: https://github.com/brijs001/portfolio
 ## What's included
 
 - **4 case studies** from Bank of America and Verisk Analytics, each following a 4-section structure: the problem, the customers, the solution under his ownership, and the results — with measurement approaches clearly marked where details are still pending.
-- **Dual-audience framing** — appealing to both PM recruiters and consulting/Upwork leads.
+- **PM Playbook Simulator** and **"Ask me anything"** Q&A, with content drawn from the case studies.
+- **Dual-audience framing** — appealing to both PM recruiters and consulting leads.
 - **Light and dark mode**, mobile-responsive, accessibility-minded.
 
 ## Tech
 
-Jekyll-rendered HTML/CSS/JS hosted on GitHub Pages, with Google Apps Script handling contact-form email. GitHub Pages builds the Markdown content into the page at deploy time; no client-side content loading is needed.
+Static site built by Jekyll on GitHub Pages — no client-side frameworks, no build tooling beyond Jekyll itself. Google Apps Script handles contact-form email.
 
 ## Project structure
 
-- `index.html` — document shell, metadata, and shared asset references.
-- `_includes/portfolio-content.md` — portfolio page content and semantic HTML markup.
-- `styles.css` — layout, components, responsive styles, and theme tokens.
-- `script.js` — theme toggle, navigation, scroll reveals, case study drawers, and contact form behavior.
-- `interactive.js` — PM Playbook Simulator and "Ask me anything" Q&A (content drawn from the case studies).
-- `analytics-consent.js` — opt-in Google Analytics loading and visitor preference handling.
-- `_includes/analytics-consent.html` — accessible analytics consent panel.
-- `_config.yml` — Jekyll configuration, including the public GA4 Measurement ID.
-- `brand-logo.png` — transparent script mark in the portfolio's primary green.
-- `brand-logo-64.png` — downsized logo used in the header.
-- `profile-photo.png` — full-resolution portrait (source file).
-- `profile-photo.jpg` — 640px web version used in the hero and social previews.
-- `apple-touch-icon.png` — 180px home-screen icon.
-- `favicon.png` — full-resolution profile-photo square (source file).
-- `apps-script/Code.gs` — Google Apps Script endpoint for the contact form.
+```
+_config.yml                 Site settings: title, author, links, GA4 ID, form endpoint, publish exclusions
+index.html                  Page shell — assembles the partials below
+_includes/
+  head.html                 Meta/SEO, Content-Security-Policy, fonts, stylesheet
+  header.html               Site header and mobile navigation
+  sections/*.html           One file per page section (hero, about, playbook, …, contact)
+  case-studies/*.html       Full case study write-ups, shown in side drawers
+  contact-dialog.html       Contact form dialog, success toast, response iframe
+  back-to-top.html, footer.html, analytics-consent.html
+_data/
+  playbooks.json            PM Playbook Simulator content
+  answers.json              "Ask me anything" answers
+assets/
+  css/main.css              Bundles css/_partials/*.css (in cascade order) into one stylesheet
+  css/_partials/            Stylesheet source, one file per component/section
+  js/theme-init.js          Applies the saved/system theme before first paint
+  js/main.js                Bundles js/_modules/*.js into one deferred script; injects _data content
+  js/_modules/              Script source, one file per feature
+  img/                      Web-optimized images
+apps-script/Code.gs         Contact form endpoint (deployed separately; not published)
+design-source/              Full-resolution source images (not published)
+```
+
+Files and folders starting with `_` are build inputs and are never published on their own. `README.md`, `apps-script/`, and `design-source/` are excluded in `_config.yml`.
+
+### Common edits
+
+| To change… | Edit |
+|---|---|
+| Page title, description, LinkedIn URL, contact endpoint | `_config.yml` |
+| Copy in a section | `_includes/sections/<section>.html` |
+| A case study | `_includes/case-studies/<slug>.html` |
+| Simulator steps or Q&A answers | `_data/playbooks.json`, `_data/answers.json` |
+| Colors, type scale, spacing | `assets/css/_partials/tokens.css` |
+| A component's styles | `assets/css/_partials/<component>.css` |
+
+New CSS partials or JS modules must also be listed in `assets/css/main.css` or `assets/js/main.js`. CSS partial order is the cascade order — keep overrides (such as `responsive.css`) after the rules they override.
+
+Asset URLs carry a `?v=` build timestamp, so browsers pick up new CSS/JS on every deploy without manual cache-busting.
+
+## Local preview
+
+GitHub Pages builds the site automatically on push to `master`. To preview locally, install Jekyll and build:
+
+```sh
+gem install jekyll -v 3.10.0 kramdown-parser-gfm
+jekyll build            # outputs to _site/
+cd _site && python3 -m http.server 8000
+```
+
+Serve `_site/` over HTTP rather than opening the file directly: the Content-Security-Policy only allows `'self'` resources, which `file://` pages don't satisfy.
+
+## Security
+
+- **Content-Security-Policy** (in `_includes/head.html`) allow-lists only the site's own assets, Google Fonts, the opt-in Google Analytics tag, and the Apps Script contact form. Inline scripts are blocked — keep all scripts in `assets/js/`. GitHub Pages cannot send response headers, so the policy is delivered by `<meta>`; header-only protections such as `frame-ancestors` aren't available on this host.
+- **Contact form**: the page accepts result messages only from Apps Script's `*-script.googleusercontent.com` origin and only for the current submission token. The endpoint sends results only to the site origin, validates and length-limits fields, uses a honeypot, throttles each sender to one message per minute, and caps total emails at 20 per hour.
+- **No secrets in the repo.** The recipient email lives in an Apps Script property; the GA4 ID and form endpoint are public configuration.
+- **Repository-only files** (README, Apps Script source, full-resolution images) are excluded from the published site.
 
 ## Contact form setup
 
-The contact form uses Google Apps Script to send messages without exposing the recipient address in the public site. GitHub Pages cannot send email on its own. Complete this one-time setup before enabling form submissions:
+The contact form uses Google Apps Script to send messages without exposing the recipient address in the public site. GitHub Pages cannot send email on its own. One-time setup:
 
 1. Create a project at [Google Apps Script](https://script.google.com/) and paste in `apps-script/Code.gs`.
-2. In **Project Settings → Script Properties**, add `RECIPIENT_EMAIL` with your destination email address. Do not put the address in the public site files.
+2. In **Project Settings → Script Properties**, add `RECIPIENT_EMAIL` with your destination email address. Do not put the address in the public site files. Optionally add `SITE_ORIGIN` (for example `https://brijs001.github.io`) if the site moves to another domain.
 3. Deploy as a **Web app**, choose **Execute as me**, and allow access to **Anyone** so visitors can submit the form.
-4. Copy the deployment URL ending in `/exec` and set `contactFormEndpoint` near the top of `script.js` to that URL.
+4. Copy the deployment URL ending in `/exec` into `contact_form_endpoint` in `_config.yml`.
 5. Commit and publish the site changes. Test the form after deployment.
 
 When updating `apps-script/Code.gs`, edit the existing web app deployment and select **New version** so the deployed endpoint uses the updated code. The `/exec` URL remains the same.
 
-The endpoint validates fields, includes a honeypot and a one-minute per-sender throttle, and sends through your Google account. Apps Script consumer accounts currently have a 100 email-recipient/day quota; Google may change quotas. The public endpoint can be submitted by anyone, so review Apps Script execution logs and disable the deployment if it receives abuse.
+Apps Script consumer accounts currently have a 100 email-recipient/day quota; Google may change quotas. The public endpoint can be submitted by anyone, so review Apps Script execution logs and disable the deployment if it receives abuse.
 
 ## Google Analytics 4
 
@@ -62,7 +107,3 @@ To confirm collection after publishing, visit the site, allow analytics, then ch
 - **Vercel** — note: Vercel's [Fair Use Guidelines](https://vercel.com/docs/limits/fair-use-guidelines#commercial-usage) restrict the Hobby (free) plan to non-commercial personal use; commercial usage (including advertising consulting services) requires a Pro or Enterprise plan.
 - **Netlify** — free tier.
 - **Cloudflare Pages** — free tier.
-
-## Local preview
-
-GitHub Pages automatically builds and serves the site. A plain `file://` preview or static file server will not process the Jekyll include and Markdown filter in `index.html`; use a local Jekyll installation to preview changes before publishing.

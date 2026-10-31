@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Jekyll build output and caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Local preview artifacts
+.rendered-preview*.html

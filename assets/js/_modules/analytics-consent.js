@@ -1,4 +1,5 @@
-(function () {
+// Opt-in Google Analytics: the gtag script is only requested after consent.
+function initAnalyticsConsent() {
   const consentPanel = document.getElementById("analyticsConsent");
   const settingsButton = document.getElementById("analyticsSettings");
 
@@ -126,11 +127,8 @@
         ? "Your current choice rejects optional analytics."
         : "Choose whether to allow optional analytics.";
     status.hidden = false;
-    analyticsPreference.checked = currentConsent === "granted";
-    preferences.hidden = false;
-    customizeButton.setAttribute("aria-expanded", "true");
     consentPanel.hidden = false;
-    analyticsPreference.focus();
+    openPreferences();
   });
 
   const existingConsent = readConsent();
@@ -139,4 +137,4 @@
   } else if (existingConsent !== "denied") {
     consentPanel.hidden = false;
   }
-})();
+}

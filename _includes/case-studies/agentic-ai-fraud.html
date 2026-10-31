@@ -1,0 +1,85 @@
+<dialog class="case-drawer" id="case-1" aria-labelledby="case-1-title">
+  <div class="case-drawer-bar">
+    <p>Case study 01 <span>/ 04</span></p>
+    <button class="case-drawer-close" type="button" data-case-close aria-label="Close case study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+      <!-- ============ Case Study 1: BofA Agentic AI Fraud ============ -->
+      <article class="case-study">
+        <div class="case-study-header">
+          <span class="case-number">01</span>
+          <h2 class="case-title" id="case-1-title">Agentic AI Fraud Prevention</h2>
+          <div class="case-meta">
+            <span class="case-company">Bank of America</span>
+            <span class="case-role">Sr. Technical Product Manager / Program Lead</span>
+            <span class="case-dates">2022 – Present</span>
+          </div>
+          <p class="case-intro">
+            An 8-agent LLM system that automates fraud operations at a top-tier bank. The engineering could have been built without a PM — <strong>but the technical PM framing the problem, choosing the evaluation criteria, and sequencing the rollout is what turned the technology into a production system</strong>.
+          </p>
+        </div>
+
+        <div class="case-metrics">
+          <div class="metric"><span class="metric-value">30%</span><span class="metric-label">reduction in false positives</span></div>
+          <div class="metric"><span class="metric-value">28%</span><span class="metric-label">improvement in detection accuracy</span></div>
+          <div class="metric"><span class="metric-value">50%</span><span class="metric-label">operational efficiency gain</span></div>
+          <div class="metric"><span class="metric-value">$1M</span><span class="metric-label">indirect expense losses prevented</span></div>
+        </div>
+
+        <div class="case-sections">
+          <div class="case-section">
+            <h3><span class="section-num">1</span> The Problem</h3>
+            <p>
+              A rule-based fraud detection system was generating more noise than signal. Analysts were overwhelmed by false-positive alerts — and the recovery cost for flagged-but-legitimate transactions was <strong>roughly 4× the value of the actual fraud</strong>.
+            </p>
+          </div>
+
+          <div class="case-section">
+            <h3><span class="section-num">2</span> The Customers</h3>
+            <p>Three distinct groups, each with a different definition of success:</p>
+            <ul>
+              <li><strong>Fraud analysts</strong> — the daily users. Needed fewer, higher-confidence alerts so they could focus on real risk.</li>
+              <li><strong>Compliance and risk teams</strong> — the gatekeepers. Required explainability, auditability, and zero tolerance for false negatives.</li>
+              <li><strong>Bank leadership</strong> — the sponsors. Needed a defensible business case: cost reduction without increased risk exposure.</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h3><span class="section-num">3</span> The Solution I Owned</h3>
+            <p>
+              I owned the product vision — <strong>"reduce friction for legitimate users while improving fraud signal precision"</strong> — and the decisions that turned it into a shipped system.
+            </p>
+            <p>What I specifically did:</p>
+            <ul>
+              <li>Partnered with data science to identify where AI added real value versus where rules were already sufficient.</li>
+              <li>Sequenced an MVP that <strong>assisted analysts rather than replacing their decisions</strong> — earning trust before expanding autonomy.</li>
+              <li>Designed the multi-agent architecture: orchestration, inter-agent data contracts, retrieval, tool interfaces, and prompt governance.</li>
+              <li>Built the evaluation harness — rubric-based evals derived from human-reviewed SOPs — that turned production misses into prompt and logic improvements.</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h3><span class="section-num">4</span> Results & Measurement</h3>
+            <p>
+              The system reduced false positives by 30%, improved fraud detection accuracy by 28%, improved operational efficiency by 50%, scaled automation to roughly <strong>60% of manual operations</strong>, and prevented approximately <strong>$1M in indirect expense losses</strong> — all while maintaining regulatory confidence.
+            </p>
+            <div class="case-measurement">
+              <span class="case-measurement-label">Proposed measurement approach — awaiting confirmation</span>
+              <p>For an AI fraud system, four dimensions need to be measured — it has to prove both that it catches fraud and that it doesn't disrupt legitimate users:</p>
+              <p><strong>Model performance:</strong> recall, precision, false-positive rate, model drift over time.</p>
+              <p><strong>Business impact:</strong> dollar value of fraud prevented, cost per investigation, alerts per analyst.</p>
+              <p><strong>User experience:</strong> false-decline rate, support contact rate post-flag, time to resolution.</p>
+              <p><strong>Operational:</strong> alert volume, % auto-resolved vs. manual review, feedback loop health.</p>
+            </div>
+            <p class="case-learning">
+              <strong>Learning:</strong> For agentic AI systems, the evaluation harness — not the model — is the real moat. Teams that skip structured evals spend months tuning blind.
+            </p>
+          </div>
+        </div>
+      </article>
+  <div class="case-drawer-nav">
+    <span></span>
+    <button class="btn btn-primary" type="button" data-case-open="case-2">Next case study <span aria-hidden="true">→</span></button>
+  </div>
+</dialog>

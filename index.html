@@ -4,61 +4,34 @@ layout: null
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brijesh Soni — Technical Product Leader · AI/ML · Cloud · SaaS</title>
-<meta name="description" content="Senior Technical Product Manager with 15+ years in AI/ML, cloud, and SaaS. Case studies from Bank of America and Verisk Analytics. Available for consulting and product leadership roles.">
-<link rel="canonical" href="https://brijs001.github.io/portfolio/">
-<meta name="theme-color" content="#f5f2ec" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#161511" media="(prefers-color-scheme: dark)">
-<meta property="og:type" content="profile">
-<meta property="og:title" content="Brijesh Soni — Technical Product Leader · AI/ML · Cloud · SaaS">
-<meta property="og:description" content="Case studies in agentic AI, platform modernization, and 0-to-1 SaaS from Bank of America and Verisk Analytics.">
-<meta property="og:url" content="https://brijs001.github.io/portfolio/">
-<meta property="og:image" content="https://brijs001.github.io/portfolio/profile-photo.jpg">
-<meta property="og:image:alt" content="Portrait of Brijesh Soni">
-<meta name="twitter:card" content="summary">
-<link rel="icon" type="image/png" sizes="512x512" href="brand-logo.png?v=brand-favicon">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script>
-  (function () {
-    var theme;
-    try {
-      theme = window.localStorage.getItem("portfolio-theme");
-    } catch (error) {}
-    if (theme !== "light" && theme !== "dark") {
-      theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    }
-    document.documentElement.setAttribute("data-theme", theme);
-    document.documentElement.classList.add("js");
-  })();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Brijesh Soni",
-  "jobTitle": "Senior Technical Product Manager",
-  "url": "https://brijs001.github.io/portfolio/",
-  "image": "https://brijs001.github.io/portfolio/profile-photo.jpg",
-  "sameAs": ["https://www.linkedin.com/in/brijesh-soni/"],
-  "knowsAbout": ["Product Management", "AI/ML", "Agentic AI", "Cloud Platforms", "B2B SaaS", "FinTech"]
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=experience-2026-10">
+{% include head.html %}
 </head>
 <body>
 <a class="skip-link" href="#top">Skip to content</a>
-{% capture portfolio_content %}{% include portfolio-content.md %}{% endcapture %}
-{{ portfolio_content | markdownify }}
+{% include header.html %}
 
+<main id="top" tabindex="-1">
+{% include sections/hero.html %}
+{% include sections/about.html %}
+{% include sections/playbook.html %}
+{% include sections/case-studies.html %}
+{% include sections/ask.html %}
+{% include sections/experience.html %}
+{% include sections/services.html %}
+{% include sections/skills.html %}
+{% include sections/contact.html %}
+</main>
+
+{% include case-studies/agentic-ai-fraud.html %}
+{% include case-studies/trading-platform.html %}
+{% include case-studies/circular-navigator.html %}
+{% include case-studies/ux-unification.html %}
+
+{% include back-to-top.html %}
+{% include contact-dialog.html %}
+{% include footer.html %}
 {% include analytics-consent.html %}
-<script src="script.js?v=experience-2026-10" defer></script>
-<script src="interactive.js?v=experience-2026-10" defer></script>
-<script src="analytics-consent.js?v=privacy-preferences-v2" defer></script>
 
+<script src="assets/js/main.js?v={{ asset_version }}" defer></script>
 </body>
 </html>
