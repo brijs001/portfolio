@@ -38,6 +38,7 @@
 }
 
 .brand-name {
+  white-space: nowrap;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--text-base);
@@ -236,4 +237,18 @@
 .icon-link:hover {
   background: var(--color-surface-offset);
   color: var(--color-primary);
+}
+
+/* Keep the brand on one line next to four header buttons on small phones */
+@media (max-width: 420px) {
+  .header-actions {
+    gap: 0;
+  }
+
+  .header-actions .icon-link,
+  .header-actions .theme-toggle,
+  .header-actions .mobile-menu-btn {
+    width: 40px;
+    height: 40px;
+  }
 }

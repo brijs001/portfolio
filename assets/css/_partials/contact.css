@@ -1,5 +1,5 @@
 .contact {
-  padding-block: clamp(var(--space-16), 8vw, 7.5rem);
+  padding-block: clamp(var(--space-10), 5vw, var(--space-16));
   color: var(--color-text-inverse);
   background:
     radial-gradient(ellipse 60% 80% at 85% 0%, color-mix(in oklab, var(--color-accent) 25%, transparent), transparent 60%),
@@ -99,6 +99,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .pulse-dot::after,
+  .playbook-run,
   .playbook-run svg,
   .scroll-cue,
   .console-caret {

@@ -1,10 +1,10 @@
 .section {
-  padding-block: clamp(var(--space-16), 8vw, 7.5rem);
+  padding-block: clamp(var(--space-10), 5vw, var(--space-16));
 }
 
 .section-head {
   max-width: 760px;
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
 }
 
 .section-head h2 {
