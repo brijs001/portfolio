@@ -47,14 +47,6 @@
     border-radius: var(--radius-md);
   }
 
-  .run-frame {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .playbook-run {
-    flex: 1;
-  }
 
   .console-body {
     height: 300px;
