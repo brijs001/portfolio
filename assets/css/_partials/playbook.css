@@ -58,6 +58,29 @@
   justify-content: center;
   font: inherit;
   font-weight: 600;
+  /* Halo uses the hero availability dot's green so the two pulses read as one system */
+  --run-halo: #2f9e6e;
+  --run-glow: color-mix(in oklab, var(--run-halo) 50%, transparent);
+  box-shadow: 0 0 18px 3px var(--run-glow);
+  animation: run-pulse 2s ease-out infinite;
+}
+
+@keyframes run-pulse {
+  0% {
+    box-shadow:
+      0 0 18px 3px var(--run-glow),
+      0 0 0 0 color-mix(in oklab, var(--run-halo) 85%, transparent);
+  }
+  45% {
+    box-shadow:
+      0 0 30px 8px color-mix(in oklab, var(--run-halo) 70%, transparent),
+      0 0 20px 12px color-mix(in oklab, var(--run-halo) 40%, transparent);
+  }
+  100% {
+    box-shadow:
+      0 0 18px 3px var(--run-glow),
+      0 0 36px 24px color-mix(in oklab, var(--run-halo) 0%, transparent);
+  }
 }
 
 .playbook-run svg {
@@ -72,6 +95,12 @@
 .playbook-run[disabled] {
   opacity: 0.7;
   cursor: progress;
+  box-shadow: none;
+  animation: none;
+}
+
+.playbook-run[disabled] svg {
+  animation: none;
 }
 
 .btn svg {

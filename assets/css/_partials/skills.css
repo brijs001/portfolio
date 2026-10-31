@@ -23,7 +23,7 @@
 }
 
 .cert-heading {
-  margin: var(--space-12) 0 var(--space-5);
+  margin: var(--space-10) 0 var(--space-5);
   font-size: var(--text-xl);
 }
 
