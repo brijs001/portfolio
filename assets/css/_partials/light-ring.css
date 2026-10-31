@@ -1,0 +1,52 @@
+/* Running light: a comet of brand green that circles an element's border.
+   Add class="light-ring" and data-light-ring to the element; light-ring.js adds
+   .is-glowing when it scrolls into view and removes it after a few laps or on
+   click. Drawn as a conic-gradient masked to a 2px ring, rotated through a
+   registered custom property. */
+@property --light-ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.light-ring {
+  position: relative;
+}
+
+.light-ring::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--light-ring-angle),
+    transparent 0deg 230deg,
+    color-mix(in oklab, #2f9e6e 45%, transparent) 290deg,
+    #6ee7b0 340deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  filter: drop-shadow(0 0 6px color-mix(in oklab, #2f9e6e 70%, transparent));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+
+.light-ring.is-glowing::before {
+  opacity: 1;
+  animation: light-ring 2.5s linear 4;
+}
+
+@keyframes light-ring {
+  to { --light-ring-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light-ring.is-glowing::before {
+    animation: none;
+    opacity: 0;
+  }
+}

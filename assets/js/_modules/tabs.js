@@ -20,6 +20,7 @@ function initTabs() {
     tabs.forEach(function (tab, index) {
       tab.addEventListener("click", function () {
         select(tab);
+        track("tab_select", { tab: tab.id.replace("tab-", "") });
       });
       tab.addEventListener("keydown", function (event) {
         let next = null;

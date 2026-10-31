@@ -23,6 +23,7 @@ function initCaseDrawers() {
     }
     drawer.scrollTop = 0;
     history.replaceState(null, "", "#" + id);
+    track("case_study_open", { case_study: id });
   }
 
   // Runs on every close path (button, backdrop, Escape); a no-op while another drawer is open.

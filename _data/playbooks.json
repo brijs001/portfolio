@@ -132,5 +132,6 @@
     "customer": "Optimized for customer value — user-facing friction is the first metric reviewed.",
     "speed": "Optimized for speed — ship the smallest valuable slice, then expand.",
     "risk": "Optimized for risk — nothing ships without compliance sign-off and an audit trail."
-  }
+  },
+  "gate_intro": "Tools and models can draft the work. The call on what ships, to whom, and when stays with the product owner."
 }

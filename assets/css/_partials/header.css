@@ -252,3 +252,8 @@
     height: 40px;
   }
 }
+
+/* The logo is dark green; lift it to the dark theme's lighter primary */
+[data-theme="dark"] .brand-mark {
+  filter: brightness(2.3) saturate(0.85);
+}
