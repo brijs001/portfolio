@@ -1,3 +1,10 @@
+// Only the portfolio may receive the result message. Override with the
+// SITE_ORIGIN script property if the site moves.
+var DEFAULT_SITE_ORIGIN = "https://brijs001.github.io";
+// Caps total emails per hour so rotating sender addresses cannot exhaust the
+// account's daily MailApp quota.
+var MAX_EMAILS_PER_HOUR = 20;
+
 function doPost(event) {
   var params = event && event.parameter ? event.parameter : {};
   var token = typeof params.submissionToken === "string" ? params.submissionToken : "";
@@ -48,6 +55,13 @@ function doPost(event) {
       return contactResult(false, token);
     }
 
+    var hourKey = "contact-hour-" + Utilities.formatDate(new Date(), "UTC", "yyyyMMddHH");
+    var sentThisHour = Number(cache.get(hourKey) || 0);
+    if (sentThisHour >= MAX_EMAILS_PER_HOUR) {
+      console.warn("Hourly contact email cap reached.");
+      return contactResult(false, token);
+    }
+
     try {
       MailApp.sendEmail({
         to: recipient,
@@ -61,6 +75,7 @@ function doPost(event) {
     }
 
     cache.put(cacheKey, "sent", 60);
+    cache.put(hourKey, String(sentThisHour + 1), 3600);
     return contactResult(true, token);
   } finally {
     lock.releaseLock();
@@ -82,12 +97,18 @@ function emailDigest(email) {
   }).join("");
 }
 
+function siteOrigin() {
+  var configured = PropertiesService.getScriptProperties().getProperty("SITE_ORIGIN");
+  return configured && /^https:\/\/[^\/]+$/.test(configured) ? configured : DEFAULT_SITE_ORIGIN;
+}
+
 function contactResult(success, token) {
+  // token is validated against /^[a-zA-Z0-9-]{10,64}$/ (or empty) before reaching here
   var safeToken = JSON.stringify(token);
   var html = '<!doctype html><html><head><meta charset="utf-8"></head><body>' +
     '<script>window.top.postMessage({type:"portfolio-contact-result",token:' +
     safeToken + ",success:" + (success ? "true" : "false") +
-    '}, "*");</script></body></html>';
+    "}, " + JSON.stringify(siteOrigin()) + ");</script></body></html>";
 
   return HtmlService.createHtmlOutput(html)
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);

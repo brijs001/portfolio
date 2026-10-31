@@ -1,0 +1,65 @@
+<section class="section playbook" id="playbook">
+  <div class="container">
+    <div class="section-head section-head-center reveal">
+      <p class="section-eyebrow">Product thinking, interactive</p>
+      <h2>PM Playbook Simulator</h2>
+      <p>Pick one of my real product challenges and what to optimize for, then watch how I take it from an ambiguous problem to measurable results. Every step is drawn from the shipped work in my case studies.</p>
+    </div>
+
+    <div class="playbook-card reveal">
+      <div class="playbook-controls">
+        <div class="playbook-group">
+          <p class="playbook-label" id="challengeLabel">1. Choose a product challenge</p>
+          <div class="option-row" role="group" aria-labelledby="challengeLabel">
+            <button class="option-btn" type="button" data-challenge="fraud" aria-pressed="true">Agentic AI fraud prevention</button>
+            <button class="option-btn" type="button" data-challenge="trading" aria-pressed="false">Trading platform modernization</button>
+            <button class="option-btn" type="button" data-challenge="saas" aria-pressed="false">0→1 SaaS analytics launch</button>
+          </div>
+        </div>
+        <div class="playbook-group">
+          <p class="playbook-label" id="lensLabel">2. Optimize for</p>
+          <div class="option-row" role="group" aria-labelledby="lensLabel">
+            <button class="option-btn" type="button" data-lens="customer" aria-pressed="true">Customer value</button>
+            <button class="option-btn" type="button" data-lens="speed" aria-pressed="false">Speed to market</button>
+            <button class="option-btn" type="button" data-lens="risk" aria-pressed="false">Risk &amp; compliance</button>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg playbook-run" id="playbookRun" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l14 8-14 8V4z"/></svg>
+          <span>Run playbook</span>
+        </button>
+      </div>
+
+      <div class="playbook-grid">
+        <div class="playbook-panel">
+          <p class="panel-tag">8-phase product lifecycle</p>
+          <ol class="phase-list" id="phaseList">
+            <li>Problem framing</li>
+            <li>Customer discovery</li>
+            <li>Opportunity &amp; vision</li>
+            <li>Prioritization &amp; trade-offs</li>
+            <li>Solution &amp; PRD</li>
+            <li>Build &amp; de-risk</li>
+            <li>Launch &amp; go-to-market</li>
+            <li>Measure &amp; learn</li>
+          </ol>
+        </div>
+        <div class="playbook-panel console-panel">
+          <div class="console">
+            <div class="console-bar">
+              <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="console-title" id="consoleTitle">playbook — agentic-ai-fraud-prevention</span>
+            </div>
+            <div class="console-body" id="consoleBody" role="log" aria-live="off">
+              <p class="console-muted">// Choose a challenge and a priority, then select “Run playbook”.</p>
+            </div>
+          </div>
+          <div class="decision-gate" id="decisionGate">
+            <p class="gate-tag">PM decision gate · human judgment</p>
+            <p class="gate-text" id="gateText" aria-live="polite">Tools and models can draft the work. The call on what ships, to whom, and when stays with the product owner.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

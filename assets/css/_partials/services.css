@@ -1,0 +1,37 @@
+.services-grid,
+.skills-grid,
+.cert-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .services-grid,
+  .skills-grid,
+  .cert-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  padding: var(--space-8);
+  border-top: 3px solid var(--color-primary);
+}
+
+.service-card h3 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+}
+
+.service-card p {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.service-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: var(--space-4);
+  color: var(--color-primary);
+}

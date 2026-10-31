@@ -1,0 +1,87 @@
+<dialog class="case-drawer" id="case-2" aria-labelledby="case-2-title">
+  <div class="case-drawer-bar">
+    <p>Case study 02 <span>/ 04</span></p>
+    <button class="case-drawer-close" type="button" data-case-close aria-label="Close case study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+      <!-- ============ Case Study 2: BofA Client Activation ============ -->
+      <article class="case-study">
+        <div class="case-study-header">
+          <span class="case-number">02</span>
+          <h2 class="case-title" id="case-2-title">Trading Platform Modernization & Client Activation</h2>
+          <div class="case-meta">
+            <span class="case-company">Bank of America</span>
+            <span class="case-role">Sr. Technical Product Manager / Program Lead</span>
+            <span class="case-dates">2022 – Present</span>
+          </div>
+          <p class="case-intro">
+            A modernization of a mission-critical trading platform handling <strong>2M+ orders per hour</strong>. I owned specific customer journeys — authentication, order management, execution experience, APIs, and operational workflows. The migration could have been run as a pure engineering program — <strong>but the technical PM owning the customer-journey lens, prioritization, and cross-functional trade-offs is what made the difference between shipping infrastructure and delivering business outcomes</strong>.
+          </p>
+        </div>
+
+        <div class="case-metrics">
+          <div class="metric"><span class="metric-value">60%</span><span class="metric-label">reduction in feature delivery time</span></div>
+          <div class="metric"><span class="metric-value">2M/hr</span><span class="metric-label">orders supported at market peak</span></div>
+          <div class="metric"><span class="metric-value">100+</span><span class="metric-label">APIs in the partner-facing ecosystem</span></div>
+          <div class="metric"><span class="metric-value">50%</span><span class="metric-label">reduction in scope changes</span></div>
+        </div>
+
+        <div class="case-sections">
+          <div class="case-section">
+            <h3><span class="section-num">1</span> The Problem</h3>
+            <p>
+              A legacy mainframe-based trading platform consumed <strong>35% of engineering capacity</strong> in maintenance and was approaching end-of-life support — creating cyber exposure and blocking feature velocity. User-level churn was rising at <strong>10%</strong>, driven by latency volatility during market spikes and a rigid UI/UX that slowed task completion.
+            </p>
+            <p>
+              Deployment cycles created constant tension between agility and regulatory safety — compliance required slower, more careful releases that frustrated product and business stakeholders.
+            </p>
+          </div>
+
+          <div class="case-section">
+            <h3><span class="section-num">2</span> The Customers</h3>
+            <ul>
+              <li><strong>Institutional investors</strong> — hedge funds, asset managers, broker-dealers — executing high-frequency trades via FIX and REST APIs. Wanted self-service onboarding and real-time order visibility.</li>
+              <li><strong>Retail partners</strong> — third-party brokerage platforms routing orders on behalf of end users. Needed reliable, low-latency integrations.</li>
+              <li><strong>Internal teams</strong> — trading advisors, compliance, fraud analytics, and customer service — each a stakeholder in the platform's reliability and auditability.</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h3><span class="section-num">3</span> The Solution I Owned</h3>
+            <p>I owned specific customer journeys across the platform and ran a three-workstream strategy prioritized against business value and regulatory constraints:</p>
+            <ul>
+              <li><strong>Trading backend:</strong> built a sandbox + API Dev Portal for partners, cutting friction in test onboarding. Added telemetry to track partner errors and automate alerting. Led a UI redesign that introduced real-time log access with role-based visibility and contextual filters — cutting log retrieval time to under 60 seconds, helping reduce onboarding time by 75%.</li>
+              <li><strong>Fraud detection integration:</strong> introduced an LLM-driven fraud scoring system — starting with a POC trained on historical triage logs. Worked with ML leads to define interpretability requirements to pass compliance scrutiny.</li>
+              <li><strong>User interface and performance:</strong> shipped an interactive, customizable, widget-style UI for individual investors — <strong>78% of adoption</strong> came from this work.</li>
+              <li><strong>API-first modernization:</strong> decomposed legacy services into API-first microservices behind the partner-facing portal, and migrated key capabilities to AWS.</li>
+              <li><strong>Self-service onboarding:</strong> automated validations across Operations, Compliance, and Technology that had previously been manual hand-offs.</li>
+            </ul>
+            <p>
+              I made the trade-offs: sequencing onboarding modernization first (fastest path to revenue), keeping the compliance requirements in scope, and keeping the UI redesign in scope when it would have been easier to cut.
+            </p>
+          </div>
+
+          <div class="case-section">
+            <h3><span class="section-num">4</span> Results & Measurement</h3>
+            <p>
+              Feature delivery time dropped by <strong>60%</strong>, platform scalability now supports roughly <strong>2 million orders per hour</strong> at market peak, and scope changes dropped by <strong>50%</strong>. Client onboarding time fell from six weeks to under five days.
+            </p>
+            <div class="case-measurement">
+              <span class="case-measurement-label">Proposed measurement approach — awaiting confirmation</span>
+              <p>Suggested success criteria would differ by audience — "external users" and "internal users" wanted different things:</p>
+              <p><strong>External users</strong> — latency, uptime, self-service onboarding completion rate, API adoption.</p>
+              <p><strong>Internal users</strong> — control, traceability, regulatory audit readiness, operational defect rate.</p>
+              <p><strong>Business</strong> — feature delivery time, scope-change rate, client churn during migration.</p>
+            </div>
+            <p class="case-learning">
+              <strong>Learning:</strong> Instrument partner-facing telemetry from day one. Partner pain points that surface in support tickets for months are the ones a real-time dashboard would have caught immediately.
+            </p>
+          </div>
+        </div>
+      </article>
+  <div class="case-drawer-nav">
+    <button class="btn btn-outline" type="button" data-case-open="case-1"><span aria-hidden="true">←</span> Previous</button>
+    <button class="btn btn-primary" type="button" data-case-open="case-3">Next case study <span aria-hidden="true">→</span></button>
+  </div>
+</dialog>

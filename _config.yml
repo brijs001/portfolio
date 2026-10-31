@@ -1,1 +1,23 @@
+# Site settings — referenced from _includes/head.html and the page partials.
+title: "Brijesh Soni — Technical Product Leader · AI/ML · Cloud · SaaS"
+description: "Senior Technical Product Manager with 15+ years in AI/ML, cloud, and SaaS. Case studies from Bank of America and Verisk Analytics. Available for consulting and product leadership roles."
+social_description: "Case studies in agentic AI, platform modernization, and 0-to-1 SaaS from Bank of America and Verisk Analytics."
+url: "https://brijs001.github.io"
+baseurl: "/portfolio"
+
+author:
+  name: "Brijesh Soni"
+  job_title: "Senior Technical Product Manager"
+  linkedin: "https://www.linkedin.com/in/brijesh-soni/"
+
+# Public configuration (not secrets).
 google_analytics: "G-552RBM1XEB"
+contact_form_endpoint: "https://script.google.com/macros/s/AKfycbyiFyJNsl9PehrE75ddPmSPAxuJKvLI6DpGqi6lbyldM9u-xJhb6urW8VqX63pzRSAtTg/exec"
+
+# Keep repository-only files off the published site.
+exclude:
+  - README.md
+  - apps-script
+  - design-source
+  - Gemfile
+  - Gemfile.lock

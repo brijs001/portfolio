@@ -1,0 +1,26 @@
+---
+# Bundles the partials below, in cascade order, into a single stylesheet.
+---
+{% include_relative _partials/tokens.css %}
+{% include_relative _partials/base.css %}
+{% include_relative _partials/header.css %}
+{% include_relative _partials/reveal.css %}
+{% include_relative _partials/hero.css %}
+{% include_relative _partials/section-layout.css %}
+{% include_relative _partials/about.css %}
+{% include_relative _partials/playbook.css %}
+{% include_relative _partials/case-cards.css %}
+{% include_relative _partials/case-drawer.css %}
+{% include_relative _partials/ask.css %}
+{% include_relative _partials/experience.css %}
+{% include_relative _partials/services.css %}
+{% include_relative _partials/skills.css %}
+{% include_relative _partials/contact.css %}
+{% include_relative _partials/buttons.css %}
+{% include_relative _partials/section-eyebrow.css %}
+{% include_relative _partials/case-study.css %}
+{% include_relative _partials/contact-dialog.css %}
+{% include_relative _partials/back-to-top.css %}
+{% include_relative _partials/responsive.css %}
+{% include_relative _partials/footer.css %}
+{% include_relative _partials/analytics-consent.css %}

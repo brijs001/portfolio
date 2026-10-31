@@ -1,0 +1,92 @@
+:root,
+[data-theme="light"] {
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-16: 4rem;
+
+  --color-bg: #f5f2ec;
+  --color-surface: #faf8f4;
+  --color-surface-2: #fdfcf9;
+  --color-surface-offset: #eeeae1;
+  --color-divider: #dcd7cb;
+  --color-border: #cfc9bb;
+  --color-text: #262418;
+  --color-text-muted: #6d6a5c;
+  --color-text-faint: #74705f;
+  --color-text-inverse: #faf8f4;
+  --color-primary: #1a4d3e;
+  --color-primary-hover: #123a2d;
+  --color-accent: #9c5218;
+  --color-error: #b42318;
+  --color-selection: rgba(26, 77, 62, 0.22);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(38, 36, 24, 0.05);
+  --shadow-md: 0 4px 12px rgba(38, 36, 24, 0.07);
+  --shadow-lg: 0 12px 32px rgba(38, 36, 24, 0.1);
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Work Sans", "Helvetica Neue", sans-serif;
+
+  --content-default: 1280px;
+
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  --color-bg: #161511;
+  --color-surface: #1b1a15;
+  --color-surface-2: #201f19;
+  --color-surface-offset: #131210;
+  --color-divider: #2a2924;
+  --color-border: #3a382f;
+  --color-text: #d8d5c8;
+  --color-text-muted: #8a877a;
+  --color-text-faint: #84816f;
+  --color-text-inverse: #262418;
+  --color-primary: #4d9b82;
+  --color-primary-hover: #6db69c;
+  --color-accent: #d18a4e;
+  --color-error: #f97066;
+  --color-selection: rgba(77, 155, 130, 0.35);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* No-JS fallback: theme-init.js normally sets data-theme before paint. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg: #161511;
+    --color-surface: #1b1a15;
+    --color-surface-2: #201f19;
+    --color-surface-offset: #131210;
+    --color-divider: #2a2924;
+    --color-border: #3a382f;
+    --color-text: #d8d5c8;
+    --color-text-muted: #8a877a;
+    --color-text-faint: #84816f;
+    --color-text-inverse: #262418;
+    --color-primary: #4d9b82;
+    --color-primary-hover: #6db69c;
+    --color-accent: #d18a4e;
+  --color-error: #f97066;
+  --color-selection: rgba(77, 155, 130, 0.35);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+}
