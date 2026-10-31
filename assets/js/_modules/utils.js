@@ -21,6 +21,14 @@ function onFrame(callback) {
   };
 }
 
+// Sends a GA4 event. window.gtag only exists after the visitor opts in to
+// analytics (see analytics-consent.js), so nothing is sent without consent.
+function track(name, params) {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, params || {});
+  }
+}
+
 function scrollBehavior() {
   return prefersReducedMotion.matches ? "auto" : "smooth";
 }

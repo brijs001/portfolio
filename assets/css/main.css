@@ -1,6 +1,7 @@
 ---
 # Bundles the partials below, in cascade order, into a single stylesheet.
 ---
+{% include_relative _partials/fonts.css %}
 {% include_relative _partials/tokens.css %}
 {% include_relative _partials/base.css %}
 {% include_relative _partials/header.css %}
@@ -8,6 +9,7 @@
 {% include_relative _partials/hero.css %}
 {% include_relative _partials/section-layout.css %}
 {% include_relative _partials/about.css %}
+{% include_relative _partials/light-ring.css %}
 {% include_relative _partials/playbook.css %}
 {% include_relative _partials/case-cards.css %}
 {% include_relative _partials/case-drawer.css %}

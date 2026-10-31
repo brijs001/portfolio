@@ -57,6 +57,8 @@ function initContactForm() {
       inquiryType.value = button.dataset.inquiryType || "Portfolio inquiry";
       setStatus("", "");
       dialog.showModal();
+      const origin = button.closest("header, section");
+      track("contact_open", { source: origin ? origin.id || "header" : "page" });
       document.getElementById("contactName").focus();
     });
   });
@@ -114,6 +116,7 @@ function initContactForm() {
     submitButton.disabled = false;
 
     if (event.data.success === true) {
+      track("contact_sent");
       dialog.close();
       showToast("Thanks — your message has been sent.");
     } else {

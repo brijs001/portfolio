@@ -3,11 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {%- comment -%}
   GitHub Pages cannot set response headers, so the security policy is delivered
-  via <meta>. Allow-list: own assets, Google Fonts, opt-in Google Analytics, and
+  via <meta>. Allow-list: own assets (including self-hosted fonts), opt-in Google Analytics, and
   the Apps Script contact form (form post + response iframe). Inline scripts are
   not allowed — keep scripts in assets/js/.
 {%- endcomment %}
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://script.google.com https://*.googleusercontent.com; form-action https://script.google.com https://*.googleusercontent.com; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self'; font-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://script.google.com https://*.googleusercontent.com; form-action https://script.google.com https://*.googleusercontent.com; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{{ site.title }}</title>
 <meta name="description" content="{{ site.description }}">
@@ -18,9 +18,12 @@
 <meta property="og:title" content="{{ site.title }}">
 <meta property="og:description" content="{{ site.social_description }}">
 <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}/">
-<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/profile-photo.jpg">
-<meta property="og:image:alt" content="Portrait of {{ site.author.name }}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.author.name }} — Technical Product Leader. $250M+ revenue and savings, 30% fewer false positives, 0-to-1 SaaS to $97M+.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/og-card.jpg">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand-logo.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <script src="assets/js/theme-init.js?v={{ asset_version }}"></script>
@@ -36,7 +39,6 @@
   "knowsAbout": ["Product Management", "AI/ML", "Agentic AI", "Cloud Platforms", "B2B SaaS", "FinTech"]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/work-sans-normal-300-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css?v={{ asset_version }}">

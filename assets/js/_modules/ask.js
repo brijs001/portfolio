@@ -24,6 +24,7 @@ function initAsk(answers) {
       }
 
       busy = true;
+      track("ask_question", { question: prompt.dataset.question });
       prompts.forEach(function (other) {
         other.classList.toggle("is-selected", other === prompt);
       });

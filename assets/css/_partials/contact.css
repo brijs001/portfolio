@@ -123,7 +123,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .pulse-dot::after,
-  .playbook-run,
   .playbook-run svg,
   .scroll-cue,
   .console-caret {

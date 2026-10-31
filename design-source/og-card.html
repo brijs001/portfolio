@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:"Source Serif 4";src:url(source-serif-4-normal-400-latin.woff2) format("woff2");font-weight:400 700;}
+@font-face{font-family:"Source Serif 4";src:url(source-serif-4-italic-400-latin.woff2) format("woff2");font-style:italic;font-weight:400;}
+@font-face{font-family:"Work Sans";src:url(work-sans-normal-300-700-latin.woff2) format("woff2");font-weight:300 700;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:630px;overflow:hidden;font-family:"Work Sans";color:#262418;
+ background:radial-gradient(ellipse 55% 60% at 12% 18%,rgba(26,77,62,.16),transparent 70%),radial-gradient(ellipse 50% 55% at 92% 90%,rgba(156,82,24,.14),transparent 70%),#f5f2ec;}
+.wrap{position:absolute;inset:0;padding:64px 72px;display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:center}
+.photo{width:300px;height:300px;border-radius:50%;object-fit:cover;object-position:center top;border:6px solid #faf8f4;box-shadow:0 0 0 4px #9c5218,0 24px 48px rgba(26,77,62,.25)}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;font-size:18px;font-weight:600;color:#1a4d3e;background:#e7ebe4;border:1px solid rgba(26,77,62,.25);margin-bottom:22px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2f9e6e}
+h1{font-family:"Source Serif 4";font-weight:600;font-size:76px;line-height:1;letter-spacing:-.02em;margin-bottom:14px}
+h1 span{font-style:italic;font-weight:400;background:linear-gradient(100deg,#1a4d3e 10%,#9c5218 90%);-webkit-background-clip:text;color:transparent}
+.title{font-size:26px;font-weight:500;color:#6d6a5c;margin-bottom:12px}
+.tag{font-family:"Source Serif 4";font-size:21px;white-space:nowrap;color:#9c5218;margin-bottom:34px}
+.stats{display:flex;gap:0;border:1px solid #dcd7cb;border-radius:14px;background:rgba(250,248,244,.85);overflow:hidden;width:fit-content}
+.stat{padding:16px 26px;border-right:1px solid #dcd7cb}.stat:last-child{border-right:0}
+.v{display:block;font-family:"Source Serif 4";font-weight:600;font-size:36px;color:#1a4d3e;line-height:1;margin-bottom:6px}
+.l{font-size:15px;color:#6d6a5c}
+.foot{position:absolute;left:72px;right:72px;bottom:30px;display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:600;color:#6d6a5c}
+.foot img{width:34px;height:34px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Source Serif 4";color:#262418}
+</style></head><body>
+<div class="wrap">
+ <img class="photo" src="profile-photo.jpg" alt="">
+ <div>
+  <div class="pill"><span class="dot"></span>Delivering AI product leadership &amp; advisory · Worldwide</div>
+  <h1>Brijesh <span>Soni</span></h1>
+  <p class="title">Technical Product Leader · AI/ML · Cloud · SaaS</p>
+  <p class="tag">Unlocking opportunity · Building innovative products · Driving growth</p>
+  <div class="stats">
+   <div class="stat"><span class="v">$250M+</span><span class="l">revenue &amp; savings</span></div>
+   <div class="stat"><span class="v">30%</span><span class="l">fewer false positives</span></div>
+   <div class="stat"><span class="v">0→1</span><span class="l">SaaS to $97M+</span></div>
+  </div>
+ </div>
+</div>
+<div class="foot"><span class="brand"><img src="brand-logo-64.png" alt="">Case studies · PM Playbook</span><span>brijs001.github.io/portfolio</span></div>
+</body></html>
