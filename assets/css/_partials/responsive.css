@@ -23,21 +23,12 @@
     padding: var(--space-4);
   }
 
-  .project-card,
-  .service-card {
-    padding: var(--space-6);
+  .hero-chips {
+    display: none;
   }
 
-  .timeline {
-    padding-left: var(--space-6);
-  }
-
-  .timeline-item {
-    padding: var(--space-5);
-  }
-
-  .timeline-item::before {
-    left: calc(-1 * var(--space-6) + 1px);
+  .tab {
+    padding-inline: var(--space-4);
   }
 
   .console-body {

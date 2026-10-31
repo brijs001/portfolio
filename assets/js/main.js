@@ -13,6 +13,7 @@
 {% include_relative _modules/navigation.js %}
 {% include_relative _modules/reveal.js %}
 {% include_relative _modules/case-drawers.js %}
+{% include_relative _modules/tabs.js %}
 {% include_relative _modules/contact-form.js %}
 {% include_relative _modules/playbook.js %}
 {% include_relative _modules/ask.js %}
@@ -24,6 +25,7 @@
   initScrollProgress();
   initReveal();
   initCaseDrawers();
+  initTabs();
   initBackToTop();
   initContactForm();
   initPlaybook(PLAYBOOK_DATA);

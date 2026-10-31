@@ -82,6 +82,30 @@
   color: color-mix(in oklab, var(--color-text-inverse) 75%, transparent);
 }
 
+.service-list {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  list-style: none;
+}
+
+.service-list li {
+  font-size: var(--text-sm);
+  color: color-mix(in oklab, var(--color-text-inverse) 75%, transparent);
+}
+
+.service-list strong {
+  color: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .service-list li {
+  color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .service-list strong {
+  color: var(--color-text);
+}
+
 .contact-links {
   display: flex;
   flex-wrap: wrap;
