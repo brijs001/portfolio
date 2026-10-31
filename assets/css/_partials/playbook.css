@@ -156,6 +156,10 @@
   }
 }
 
+.phase-heading {
+  text-align: center;
+}
+
 .phase-list {
   display: grid;
   gap: var(--space-1);
@@ -343,4 +347,52 @@
   font-size: var(--text-sm);
   color: var(--color-text);
   max-width: none;
+}
+
+/* Very small phones: drop the tab icons so both tabs fit */
+@media (max-width: 380px) {
+  .tab {
+    padding-inline: var(--space-3);
+  }
+
+  .tab svg {
+    display: none;
+  }
+}
+
+/* Stacked layout (tablet and mobile): options → lifecycle → Run → console.
+   The two wrappers are flattened so their children can be ordered as one column. */
+@media (max-width: 899px) {
+  .playbook-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .playbook-controls,
+  .playbook-grid {
+    display: contents;
+  }
+
+  .playbook-group {
+    order: 1;
+  }
+
+  .playbook-grid > .playbook-panel:first-child {
+    order: 2;
+  }
+
+  .run-frame {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .playbook-run {
+    flex: 1;
+  }
+
+  .console-panel {
+    order: 4;
+  }
 }

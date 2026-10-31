@@ -257,3 +257,10 @@
 [data-theme="dark"] .brand-mark {
   filter: brightness(2.3) saturate(0.85);
 }
+
+/* Very small phones (≤360px): the logo alone keeps all header buttons on screen */
+@media (max-width: 360px) {
+  .brand-name {
+    display: none;
+  }
+}
